@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>채용공고 모음</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;padding:18px;background:#fff;color:#0f172a;font-family:Pretendard,-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
+.wrap{max-width:1060px;margin:0 auto}
+.hdr{text-align:center;margin-bottom:14px;padding:22px 18px;background:linear-gradient(135deg,#eff6ff,#f5f3ff);border:1px solid #e2e8f0;border-radius:18px}
+.hdr h1{font-size:24px;margin:0 0 8px;font-weight:950;letter-spacing:-.03em}.sub{color:#64748b;font-size:12px;line-height:1.55}.badge{display:inline-flex;margin:10px 3px 0;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:850}.badge.total{background:#dbeafe;color:#1d4ed8}.badge.new{background:#ffe4e6;color:#be123c}.badge.yesterday{background:#e0f2fe;color:#0369a1}
+.summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:14px}.sum-card{display:block;text-decoration:none;text-align:center;padding:12px 8px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;transition:.2s;box-shadow:0 6px 18px rgba(15,23,42,.04)}.sum-card:hover{transform:translateY(-2px);background:#f8fafc}.sum-icon{font-size:20px;margin-bottom:3px}.sum-num{font-size:22px;font-weight:950}.sum-label{font-size:11px;color:#64748b;font-weight:750;margin-top:2px}
+.tool-panel{position:sticky;top:10px;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border:1px solid #e2e8f0;border-radius:16px;padding:14px;margin:0 0 18px;box-shadow:0 12px 36px rgba(15,23,42,.09)}.tool-panel h2{border:0;margin:0 0 8px;padding:0;color:#0f172a;font-size:17px}.tool-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.selected-count{font-size:12px;color:#334155;font-weight:850;margin-right:auto}.tool-btn{border:0;border-radius:10px;padding:9px 12px;background:#2563eb;color:#fff;font-weight:900;cursor:pointer}.tool-btn.secondary{background:#f1f5f9;color:#0f172a;border:1px solid #cbd5e1}.tool-btn.pink{background:#7c3aed}.tool-btn:disabled{opacity:.42;cursor:not-allowed}.hint{font-size:12px;color:#64748b;line-height:1.55;margin:8px 0 0}
+.output-box,.json-zone{display:none;margin-top:12px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px}.output-box.active,.json-zone.active{display:block}.json-zone.active{max-height:min(78vh,780px);overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;-webkit-overflow-scrolling:touch}.json-zone.fullscreen{max-height:none!important;overflow-y:auto!important}.result-panel{position:relative}.result-panel.collapsed>.result-body{display:none}.result-panel.fullscreen{position:fixed!important;inset:14px!important;z-index:9999!important;margin:0!important;overflow:auto!important;background:#fff!important;border:1px solid #cbd5e1!important;border-radius:16px!important;padding:14px!important;box-shadow:0 24px 80px rgba(15,23,42,.2)!important}.result-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;position:sticky;top:0;z-index:3;background:inherit;padding:2px 0 8px}.result-title{font-weight:950}.window-controls{display:flex;gap:6px;margin-left:auto}.window-btn{width:30px;height:30px;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc;color:#0f172a;font-weight:950;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}.window-btn:hover{background:#e2e8f0}.window-btn.close:hover{background:#fee2e2;border-color:#f87171;color:#b91c1c}.result-panel.collapsed .result-header{margin-bottom:0}.body-lock{overflow:hidden}
+.share-block{border:1px solid #e2e8f0;border-radius:12px;padding:10px;margin:10px 0;background:#fff}.share-block h3{margin:0 0 8px;font-size:14px}.share-block textarea,.output-box textarea{width:100%;min-height:172px;background:#fff;color:#0f172a;border:1px solid #cbd5e1;border-radius:10px;padding:12px;font-family:inherit;font-size:13px;line-height:1.6}.small-btn{border:1px solid #cbd5e1;background:#f8fafc;color:#0f172a;border-radius:8px;padding:7px 9px;font-size:12px;font-weight:850;cursor:pointer}.small-btn:hover{background:#e2e8f0}
+.json-set{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:14px;margin:12px 0}.json-set h3{margin:0 0 10px;font-size:16px}.manual-note{font-size:12px;color:#64748b;line-height:1.5;margin:6px 0 10px}.manual-text{width:100%;min-height:120px;background:#fff;color:#0f172a;border:1px solid #cbd5e1;border-radius:10px;padding:10px;font-family:inherit;font-size:12px;line-height:1.5;margin-bottom:10px}.ai-demo-box{background:#f8fafc;border:1px solid #dbeafe;border-radius:14px;padding:14px;margin:10px 0 14px}.ai-demo-head{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:9px}.ai-badge{font-size:11px;font-weight:950;background:#fff7ed;color:#c2410c;border:1px solid #fed7aa;padding:4px 8px;border-radius:999px}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.form-field{display:flex;flex-direction:column;gap:5px}.form-field.full{grid-column:1/-1}.form-field label{font-size:11px;color:#334155;font-weight:900}.form-field input,.form-field textarea,.form-field select{width:100%;background:#fff;color:#0f172a;border:1px solid #cbd5e1;border-radius:9px;padding:9px;font-family:inherit;font-size:12px}.form-field textarea{min-height:76px;line-height:1.5;resize:vertical}.demo-actions{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}.json-preview{width:100%;min-height:300px;background:#fff;color:#0f172a;border:1px solid #cbd5e1;border-radius:10px;padding:12px;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;font-size:12px;line-height:1.6;resize:vertical}
+section{margin-bottom:24px}section h2{font-size:18px;font-weight:950;margin:0 0 12px;padding-bottom:8px;letter-spacing:-.02em}.count-badge{font-size:12px;padding:3px 8px;border-radius:999px;margin-left:5px}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}.card{background:#fff;border:1px solid #e2e8f0;border-radius:14px;padding:14px;transition:.2s;min-height:250px;display:flex;flex-direction:column;box-shadow:0 6px 18px rgba(15,23,42,.04)}.card:hover{border-color:#93c5fd;transform:translateY(-2px)}.card.selected{outline:2px solid #2563eb;background:#eff6ff}.new-card{border-color:#fda4af}.select-top{display:flex;align-items:center;gap:7px;font-size:11px;font-weight:850;color:#334155;margin-bottom:9px}.check-label{display:flex;align-items:center;gap:5px;cursor:pointer}.check-label input{width:16px;height:16px;accent-color:#2563eb}.select-toggle{border:1px solid #93c5fd;background:#eff6ff;color:#1d4ed8;border-radius:999px;padding:5px 9px;font-size:11px;font-weight:900;cursor:pointer}.card.selected .select-toggle{background:#2563eb;color:#fff}.desc-pill{margin-left:auto;border-radius:999px;padding:3px 7px;font-size:10px;font-weight:900}.desc-pill.text{background:#ecfdf5;color:#047857}.desc-pill.manual{background:#fffbeb;color:#b45309}.platform-line{display:flex;align-items:center;gap:6px;color:#334155;font-size:12px;font-weight:850}.platform-dot{width:7px;height:7px;border-radius:50%;display:inline-block}.status-badge{margin-left:auto;font-size:10px;font-weight:900;padding:3px 7px;border-radius:999px}.status-badge.new{background:#ffe4e6;color:#be123c}.status-badge.yesterday{background:#e0f2fe;color:#0369a1}.status-badge.baseline{background:#fef3c7;color:#b45309}.status-badge.old{background:#f1f5f9;color:#64748b}.category-line{font-size:17px;font-weight:950;line-height:1.05;letter-spacing:-.03em;margin:6px 0}.date-line{display:flex;gap:6px;flex-wrap:wrap;font-size:11px;color:#b45309}.date-line span{background:#fffbeb;padding:4px 7px;border-radius:7px}.date-line b{color:#92400e;margin-right:4px}.job-title{font-weight:900;font-size:14px;color:#0f172a;line-height:1.42;margin:12px 0 10px;letter-spacing:-.02em}.job-meta{display:flex;flex-direction:column;gap:5px;margin-bottom:12px;color:#334155;font-size:12px;line-height:1.4}.job-meta div{display:grid;grid-template-columns:56px 1fr;gap:7px;align-items:start}.job-meta span{color:#64748b;font-size:11px;font-weight:850}.btn{margin-top:auto;display:inline-flex;align-items:center;justify-content:center;width:100%;text-decoration:none;color:#1d4ed8;background:#eff6ff;border:1px solid #93c5fd;padding:9px 10px;border-radius:10px;font-weight:900;font-size:13px}.empty-mini,.empty-box{background:#f8fafc;border:1px dashed #cbd5e1;border-radius:14px;padding:18px;color:#64748b;text-align:center}.ft{text-align:center;margin-top:28px;padding-top:14px;border-top:1px solid #e2e8f0;font-size:11px;color:#64748b}
+@media(max-width:640px){body{padding:12px}.grid{grid-template-columns:1fr}.tool-panel{position:relative;top:auto}.form-grid{grid-template-columns:1fr}.form-field.full{grid-column:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hdr">
+    <h1>📋 채용공고 모음</h1>
+    <div class="sub">수집 시각 2026년 07월 15일 13:51<br>카톡 공유글과 Figma용 JSON은 선택한 공고를 기준으로 생성됩니다. · JSON 전용 라이트 버전</div>
+    <span class="badge total">전체 0건</span>
+    <span class="badge new">오늘 신규 0건</span>
+    <span class="badge yesterday">어제 발견 0건</span>
+  </header>
+  <div class="summary">
+        <a href="#section-마케팅" class="sum-card" style="border-color:#F472B630;">
+          <div class="sum-icon">📢</div>
+          <div class="sum-num" style="color:#F472B6;">0</div>
+          <div class="sum-label">마케팅 · 오늘 0 · 어제 0</div>
+        </a>
+        
+        <a href="#section-기획" class="sum-card" style="border-color:#A78BFA30;">
+          <div class="sum-icon">📐</div>
+          <div class="sum-num" style="color:#A78BFA;">0</div>
+          <div class="sum-label">기획 · 오늘 0 · 어제 0</div>
+        </a>
+        
+        <a href="#section-인사" class="sum-card" style="border-color:#34D39930;">
+          <div class="sum-icon">🤝</div>
+          <div class="sum-num" style="color:#34D399;">0</div>
+          <div class="sum-label">인사 · 오늘 0 · 어제 0</div>
+        </a>
+        
+        <a href="#section-영업" class="sum-card" style="border-color:#FBBF2430;">
+          <div class="sum-icon">💼</div>
+          <div class="sum-num" style="color:#FBBF24;">0</div>
+          <div class="sum-label">영업 · 오늘 0 · 어제 0</div>
+        </a>
+        
+        <a href="#section-개발" class="sum-card" style="border-color:#60A5FA30;">
+          <div class="sum-icon">🤖</div>
+          <div class="sum-num" style="color:#60A5FA;">0</div>
+          <div class="sum-label">개발 · 오늘 0 · 어제 0</div>
+        </a>
+        </div>
+  <section class="tool-panel" id="share-tools">
+    <h2>✅ 공유글 / JSON 생성</h2>
+    <div class="tool-row">
+      <div class="selected-count">선택한 공고 <b id="selectedCount">0</b>개 · 카톡은 선택한 공고 전체, JSON은 첫 번째 선택 공고 1개로 생성</div>
+      <button class="tool-btn secondary" id="clearSelection" type="button">선택 해제</button>
+      <button class="tool-btn" id="makeAllKakao" type="button" disabled>선택 공고 카톡 공유글 생성</button>
+      <button class="tool-btn pink" id="makeJson" type="button" disabled>선택 공고 JSON 생성</button>
+    </div>
+    <p class="hint">카톡 공유글에는 선택한 공고만 들어갑니다. 여러 직무를 선택하면 직무별로 나뉘며, 선택한 공고 수만큼 모두 포함됩니다. JSON은 첫 번째 선택 공고 1개로 생성됩니다.</p>
+    <div class="output-box result-panel" id="kakaoBox">
+      <div class="result-header">
+        <span class="result-title">선택 공고 카톡 공유글</span>
+        <button class="small-btn" id="copyAllKakao" type="button">전체 복사</button>
+        <div class="window-controls">
+          <button class="window-btn" type="button" title="접기/펼치기" onclick="toggleResultCollapse('kakaoBox', this)">—</button>
+          <button class="window-btn" type="button" title="전체화면/복원" onclick="toggleResultFullscreen('kakaoBox', this)">□</button>
+          <button class="window-btn close" type="button" title="닫기" onclick="closeResultPanel('kakaoBox')">×</button>
+        </div>
+      </div>
+      <div class="result-body"><div id="shareBlocks"></div></div>
+    </div>
+    <div class="json-zone result-panel" id="jsonZone"></div>
+  </section>
+  
+        <section class="cat-section" id="section-마케팅">
+          <h2 style="color:#F472B6;border-bottom:3px solid #F472B6;">
+            📢 마케팅 <span class="count-badge" style="background:#F472B622;color:#F472B6;">0건</span>
+          </h2>
+          <div class="grid"><div class="empty-mini">수집된 공고 없음</div></div>
+        </section>
+        
+        <section class="cat-section" id="section-기획">
+          <h2 style="color:#A78BFA;border-bottom:3px solid #A78BFA;">
+            📐 기획 <span class="count-badge" style="background:#A78BFA22;color:#A78BFA;">0건</span>
+          </h2>
+          <div class="grid"><div class="empty-mini">수집된 공고 없음</div></div>
+        </section>
+        
+        <section class="cat-section" id="section-인사">
+          <h2 style="color:#34D399;border-bottom:3px solid #34D399;">
+            🤝 인사 <span class="count-badge" style="background:#34D39922;color:#34D399;">0건</span>
+          </h2>
+          <div class="grid"><div class="empty-mini">수집된 공고 없음</div></div>
+        </section>
+        
+        <section class="cat-section" id="section-영업">
+          <h2 style="color:#FBBF24;border-bottom:3px solid #FBBF24;">
+            💼 영업 <span class="count-badge" style="background:#FBBF2422;color:#FBBF24;">0건</span>
+          </h2>
+          <div class="grid"><div class="empty-mini">수집된 공고 없음</div></div>
+        </section>
+        
+        <section class="cat-section" id="section-개발">
+          <h2 style="color:#60A5FA;border-bottom:3px solid #60A5FA;">
+            🤖 개발 <span class="count-badge" style="background:#60A5FA22;color:#60A5FA;">0건</span>
+          </h2>
+          <div class="grid"><div class="empty-mini">수집된 공고 없음</div></div>
+        </section>
+        
+  <footer class="ft">Generated by Selenium job crawler · OCR은 하지 않습니다. 상세내용 영역에서 텍스트만 자동 저장하고, 이미지형 공고는 JSON 필드를 직접 입력하면 됩니다.</footer>
+</div>
+<script>
+const JOBS = [];
+const CATEGORY_ORDER = ["마케팅", "기획", "인사", "영업", "개발"];
+const CATEGORY_LABELS = {"기획":"기획/운영", "마케팅":"마케팅", "인사":"인사", "영업":"영업", "개발":"개발"};
+const JOB_MAP = new Map(JOBS.map(j => [j.fingerprint, j]));
+const selectedFps = new Set();
+function escapeHtml(str){return String(str || '').replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));}
+function escapeRegExp(str){return String(str || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');}
+function cleanTitle(job){let title=(job.title||'').trim(); const company=(job.company||'').trim(); if(company){title=title.replace(new RegExp('^\\['+escapeRegExp(company)+'\\]\\s*'),''); title=title.replace(new RegExp('^'+escapeRegExp(company)+'\\s*'),'');} return title || '공고명 확인 필요';}
+function displayDeadline(job){const d=(job.deadline||'').trim().replace(/\s*\(?공고 확인 요망\)?\s*/g,' ').trim(); if(!d)return '마감일 확인 필요'; if(d.includes('채용 시')||d.includes('채용시')||d.includes('상시')) return '채용 시 마감'; return d;}
+function byCategory(cat){return JOBS.filter(j => j.category === cat);}
+function getSelectedJobs(){return Array.from(selectedFps).map(fp => JOB_MAP.get(fp)).filter(Boolean);}
+function updateSelectionUI(){document.getElementById('selectedCount').textContent = selectedFps.size; const none=selectedFps.size === 0; document.getElementById('makeJson').disabled = none; document.getElementById('makeAllKakao').disabled = none; document.querySelectorAll('.card').forEach(card => {const fp=card.dataset.fp; const on=selectedFps.has(fp); card.classList.toggle('selected', on); const cb=card.querySelector('.job-check'); if(cb) cb.checked=on; const btn=card.querySelector('.select-toggle'); if(btn) btn.textContent=on?'선택됨':'공고 선택';});}
+function toggleFp(fp, force){if(!fp) return; if(force === true) selectedFps.add(fp); else if(force === false) selectedFps.delete(fp); else if(selectedFps.has(fp)) selectedFps.delete(fp); else selectedFps.add(fp); updateSelectionUI();}
+function kakaoTextFor(cat, jobs){const label=CATEGORY_LABELS[cat] || cat; const picks = jobs; const head=`오늘의 ${label} 공고 추천!🚨`; if(!picks.length) return `${head}\n선택한 공고가 없습니다.`; const items=picks.map(job => `📍 [${job.company || '회사명 확인 필요'}] ${cleanTitle(job)}\n📌 근무 형태 : ${job.job_type || '근무 형태 확인 필요'}\n⏰ 마감 기한 : ${displayDeadline(job)}\n👉 ${job.link || job.detail_url || ''}`); return `${head}\n${items.join('\n\n')}`;}
+function renderShareBlocks(){const selected=getSelectedJobs(); if(!selected.length){alert('카톡 공유글로 만들 공고를 선택해주세요.'); return;} const grouped=new Map(); selected.forEach(job=>{const cat=job.category || '기타'; if(!grouped.has(cat)) grouped.set(cat, []); grouped.get(cat).push(job);}); const orderedCats=[...CATEGORY_ORDER.filter(cat=>grouped.has(cat)), ...Array.from(grouped.keys()).filter(cat=>!CATEGORY_ORDER.includes(cat))]; const box=document.getElementById('shareBlocks'); box.innerHTML = orderedCats.map(cat => {const text=kakaoTextFor(cat, grouped.get(cat) || []); return `<div class="share-block"><div class="tool-row" style="margin-bottom:8px;"><h3>${escapeHtml(CATEGORY_LABELS[cat] || cat)}</h3><button class="small-btn copy-one" type="button">복사</button></div><textarea>${escapeHtml(text)}</textarea></div>`;}).join(''); document.getElementById('kakaoBox').classList.add('active'); document.getElementById('kakaoBox').scrollIntoView({behavior:'smooth', block:'center'});}
+function textSnippet(job, fallback){const t=(job.description_text || '').replace(/\s+/g,' ').trim(); if(!t) return fallback; return t.slice(0,160)+(t.length>160?'...':'');}
+function hookText(job){return `${job.company || '오늘의 기업'}에서,\n${cleanTitle(job)} 채용!`;}
+function roleText(job){return cleanTitle(job).replace(/\s+/g,' ').slice(0,60) || (job.raw_category || job.category || '직무 확인 필요');}
+function repairBrokenUnits(text){return String(text||'').replace(/(\d+(?:[.,]\d+)?)\s*\n\s*(개월|년|주|일|시간|분|명|만원|원|%)/g,'$1$2');}
+function cleanListPrefix(value){return String(value||'').replace(/\r/g,'').trim().replace(/^\s*(?:(?:[-–—*•▪◦])\s*)+/,'').replace(/^\s*\d{1,2}\s*[.)]\s+/,'').trim();}
+function isKnownSectionLine(value){const c=cleanListPrefix(value).replace(/^\s*[\[【(]\s*/,'').replace(/\s*[\]】)]\s*$/,'').replace(/\s+/g,'').replace(/[:：]+$/,''); return /^(담당업무|주요업무|업무내용|담당직무|직무내용|주요역할|지원자격|자격요건|필수요건|필요요건|지원요건|고용조건|고용형태|근무조건|근무기간|근무시간|채용형태|계약형태|우대사항|우대자격|우대요건|우대조건|선호사항|선호요건|포지션상세|포지션소개|혜택및복지|복리후생|혜택|채용전형|전형절차|채용절차|채용프로세스|근무지|근무지역|접수방법|기타사항|회사소개|채용정보|모집기간|경력)$/i.test(c);}
+function bracketDelta(value){const s=String(value||''); const open=(s.match(/[([{]/g)||[]).length; const close=(s.match(/[)\]}]/g)||[]).length; return open-close;}
+function joinListFragment(left,right){const a=String(left||'').trim(); const b=String(right||'').trim(); if(!a)return b; if(!b)return a; const noSpace=/[([{\/]$/.test(a)||/^[)\]}\/,.:;]/.test(b); return a+(noSpace?'':' ')+b;}
+function splitItems(text){
+  let raw=repairBrokenUnits(text).replace(/\r/g,'');
+  // 같은 줄에 이어진 실제 글머리표만 새 줄로 바꿉니다. 괄호 안의 '/'·','는 건드리지 않습니다.
+  raw=raw.replace(/([^\n])\s+([•▪◦])\s+(?=\S)/g,'$1\n$2 ');
+  const lines=raw.split(/\n/).map(v=>v.trim()).filter(Boolean);
+  const items=[]; let current=''; let depth=0;
+  const flush=()=>{const v=cleanListPrefix(current); if(v)items.push(v); current=''; depth=0;};
+  for(const line of lines){
+    const marked=/^\s*(?:(?:[-–—*•▪◦])+|\d{1,2}\s*[.)])\s*/.test(line);
+    const cleaned=cleanListPrefix(line);
+    if(!cleaned)continue;
+    if(isKnownSectionLine(line)){flush(); items.push(cleaned); continue;}
+    if(marked){flush(); current=cleaned; depth=Math.max(0,bracketDelta(cleaned)); continue;}
+    if(!current){current=cleaned; depth=Math.max(0,bracketDelta(cleaned)); continue;}
+    const punctuationOnly=/^[()[\]{},/·:;]+$/.test(cleaned);
+    const shortAcronym=/^[A-Za-z][A-Za-z0-9+.#/-]{0,9}$/.test(current.trim());
+    if(depth>0||punctuationOnly||shortAcronym||/^[)\]}\/,.:;]/.test(cleaned)){
+      current=joinListFragment(current,cleaned);
+      depth=Math.max(0,depth+bracketDelta(cleaned));
+    }else{
+      flush(); current=cleaned; depth=Math.max(0,bracketDelta(cleaned));
+    }
+  }
+  flush(); return items;
+}
+function uniqueItems(items, max=20){const seen=new Set(); return items.filter(v=>{const k=v.replace(/\s+/g,''); if(!k||seen.has(k)) return false; seen.add(k); return true;}).slice(0,max);}
+function normalizeSectionLabel(line){return cleanListPrefix(line).replace(/^\s*[\[【(]\s*/,'').replace(/\s*[\]】)]\s*$/,'').replace(/\s+/g,'').replace(/[:：]+$/,'');}
+function detectJobSection(line){
+  const compact=normalizeSectionLabel(line);
+  if(/^(담당업무|주요업무|업무내용|담당직무|직무내용|주요역할|Responsibilities?)$/i.test(compact)) return 'duties';
+  if(/^(지원자격|자격요건|필수요건|필요요건|지원요건|Qualifications?|Requirements?)$/i.test(compact)) return 'requirements';
+  if(/^(고용조건|고용형태|근무조건|근무기간|근무시간|채용형태|계약형태)$/i.test(compact)) return 'employment';
+  if(/^(우대사항|우대자격|우대요건|우대조건|선호사항|선호요건|PreferredQualifications?|PreferredRequirements?)$/i.test(compact)) return 'preferred';
+  if(/^(포지션상세|포지션소개|혜택및복지|복리후생|혜택|채용전형|전형절차|채용절차|채용프로세스|근무지|근무지역|접수방법|기타사항|회사소개|채용정보|모집기간|경력)$/i.test(compact)) return 'ignore';
+  return '';
+}
+function classifyDemoText(raw, job){
+  const lines=splitItems(raw);
+  const duties=[], requirements=[], employment=[], preferred=[];
+  const dutyRe=/(담당|업무|기획|운영|제작|관리|지원|분석|모니터링|작성|개선|진행|협업|리서치|온보딩)/;
+  const prefRe=/(우대|경험이?\s*있는|경력|활용.*경험|이해도가?\s*높|능숙|전공자|포트폴리오)/;
+  const reqRe=/(필수|자격|가능하신|가능한|근무 가능|커뮤니케이션|영어|성향|태도|역량|졸업|재학|책임감)/;
+  let section='', structured=false;
+  for(const line of lines){
+    const nextSection=detectJobSection(line);
+    if(nextSection){section=nextSection; structured=true; continue;}
+    if(section==='duties'){duties.push(line); continue;}
+    if(section==='requirements'){requirements.push(line); continue;}
+    if(section==='employment'){employment.push(line); continue;}
+    if(section==='preferred'){preferred.push(line); continue;}
+    if(section==='ignore') continue;
+    if(!structured){
+      if(prefRe.test(line)) preferred.push(line);
+      else if(reqRe.test(line)) requirements.push(line);
+      else if(dutyRe.test(line)) duties.push(line);
+    }
+  }
+  const title=cleanTitle(job);
+  const parsedEmployment=uniqueItems(employment,5).join(' · ');
+  const storedEmployment=String(job.job_type||'').trim();
+  const safeStoredEmployment=/확인 필요|공고 확인 필요/.test(storedEmployment)?'':storedEmployment;
+  return {
+    company: job.company||'회사명 확인 필요',
+    role: title||job.raw_category||'채용 직무 확인 필요',
+    employment: parsedEmployment||safeStoredEmployment,
+    deadline: displayDeadline(job),
+    posts: '371',
+    followers: '2.3만',
+    following: '7',
+    headline: `${job.company||'오늘의 기업'}에서\n${title||'인턴'} 채용 중!`,
+    duties: uniqueItems(duties,20),
+    requirements: uniqueItems(requirements,20),
+    preferred: uniqueItems(preferred,20)
+  };
+}
+function itemsToText(items){return (items||[]).map(v=>`• ${v}`).join('\n');}
+function readJsonForm(fp){const q=id=>document.getElementById(id+'_'+fp); return {company:q('f_company').value.trim(),role:q('f_role').value.trim(),employment:q('f_employment').value.trim(),deadline:q('f_deadline').value.trim(),headline:q('f_headline').value.trim(),duties:splitItems(q('f_duties').value),requirements:splitItems(q('f_requirements').value),preferred:splitItems(q('f_preferred').value),posts:(q('f_posts').value||'371').trim(),followers:(q('f_followers').value||'2.3만').trim(),following:(q('f_following').value||'7').trim()};}
+function jsonPayload(fp){const d=readJsonForm(fp); return {company:d.company,headline:d.headline,role:d.role,employment:d.employment,deadline:d.deadline,duties:d.duties,requirements:d.requirements,preferred:d.preferred,posts:d.posts,followers:d.followers,following:d.following};}
+function refreshJsonPreview(fp){const preview=document.getElementById('json_preview_'+fp); if(!preview)return ''; const text=JSON.stringify(jsonPayload(fp),null,2); preview.value=text; return text;}
+function applyDemoAI(job){const fp=job.fingerprint; const raw=document.getElementById('source_'+fp).value; const d=classifyDemoText(raw,job); const set=(id,val)=>document.getElementById(id+'_'+fp).value=val; set('f_company',d.company);set('f_role',d.role);set('f_employment',d.employment);set('f_deadline',d.deadline);set('f_posts',d.posts||'371');set('f_followers',d.followers||'2.3만');set('f_following',d.following||'7');set('f_headline',d.headline);set('f_duties',itemsToText(d.duties));set('f_requirements',itemsToText(d.requirements));set('f_preferred',itemsToText(d.preferred));refreshJsonPreview(fp); alert('API 미연결 예시 문구가 생성되었습니다. 실제 GPT API 연결 시 이 단계만 API 응답으로 교체하면 됩니다.');}
+function closeResultPanel(id){const el=document.getElementById(id);if(!el)return;el.classList.remove('active','fullscreen','collapsed');document.body.classList.remove('body-lock');if(id==='jsonZone')el.innerHTML='';}
+function toggleResultCollapse(id,btn){const el=document.getElementById(id);if(!el)return;if(el.classList.contains('fullscreen')){el.classList.remove('fullscreen');document.body.classList.remove('body-lock');}el.classList.toggle('collapsed');if(btn)btn.textContent=el.classList.contains('collapsed')?'＋':'—';}
+function toggleResultFullscreen(id,btn){const el=document.getElementById(id);if(!el)return;el.classList.remove('collapsed');el.classList.toggle('fullscreen');document.body.classList.toggle('body-lock',el.classList.contains('fullscreen'));if(btn)btn.textContent=el.classList.contains('fullscreen')?'❐':'□';}
+async function copyFigmaJson(fp){const text=refreshJsonPreview(fp); try{await navigator.clipboard.writeText(text); alert('Figma용 JSON 복사 완료');}catch(e){prompt('아래 JSON을 복사해주세요.',text);}}
+function createJsonEditor(job){const fp=job.fingerprint; const demo=classifyDemoText(job.description_text||'',job); const typeText=job.description_type==='text'?'크롤링된 텍스트를 원문 입력칸에 넣었습니다.':'이미지 공고는 원문을 보며 필요한 내용을 붙여넣은 뒤 예시 문구 생성 버튼을 누르세요.'; return `<article class="json-set"><h3>[${escapeHtml(job.company||'회사명 확인 필요')}] ${escapeHtml(cleanTitle(job))}</h3><p class="manual-note">${typeText}</p><div class="ai-demo-box"><div class="ai-demo-head"><b>1. 공고 원문 입력</b><span class="ai-badge">GPT API 미연결 · 데모 로직</span></div><textarea id="source_${fp}" class="manual-text" placeholder="공고 내용을 순서 없이 붙여넣어도 됩니다. 예: 담당업무, 필요요건, 우대사항, 근무기간, 마감일 등">${escapeHtml(job.description_text||'')}</textarea><div class="demo-actions"><button class="tool-btn" type="button" onclick="applyDemoAI(JOB_MAP.get('${fp}'))">✨ AI 문구 생성 예시</button><button class="tool-btn secondary" type="button" onclick="refreshJsonPreview('${fp}')">JSON 새로고침</button><button class="tool-btn secondary" type="button" onclick="copyFigmaJson('${fp}')">Figma용 JSON 복사</button></div><div class="ai-demo-head"><b>2. 구조화 결과 확인·수정</b></div><div class="form-grid"><div class="form-field"><label>회사명</label><input id="f_company_${fp}" value="${escapeHtml(demo.company)}"></div><div class="form-field"><label>채용 직무</label><input id="f_role_${fp}" value="${escapeHtml(demo.role)}"></div><div class="form-field"><label>고용 형태</label><input id="f_employment_${fp}" value="${escapeHtml(demo.employment)}"></div><div class="form-field"><label>마감 기한</label><input id="f_deadline_${fp}" value="${escapeHtml(demo.deadline)}"></div><div class="form-field full"><label>헤드라인</label><textarea id="f_headline_${fp}">${escapeHtml(demo.headline)}</textarea></div><div class="form-field full"><label>담당 업무</label><textarea id="f_duties_${fp}">${escapeHtml(itemsToText(demo.duties))}</textarea></div><div class="form-field full"><label>필요 요건</label><textarea id="f_requirements_${fp}">${escapeHtml(itemsToText(demo.requirements))}</textarea></div><div class="form-field full"><label>우대 요건</label><textarea id="f_preferred_${fp}">${escapeHtml(itemsToText(demo.preferred))}</textarea></div><div class="form-field"><label>P3 게시물</label><input id="f_posts_${fp}" value="${escapeHtml(demo.posts||'371')}"></div><div class="form-field"><label>P3 팔로워</label><input id="f_followers_${fp}" value="${escapeHtml(demo.followers||'2.3만')}"></div><div class="form-field"><label>P3 팔로잉</label><input id="f_following_${fp}" value="${escapeHtml(demo.following||'7')}"></div></div><div class="ai-demo-head" style="margin-top:14px"><b>3. JSON 결과</b><span class="ai-badge">입력값 수정 시 자동 반영</span></div><textarea id="json_preview_${fp}" class="json-preview" readonly></textarea></div></article>`;}
+document.addEventListener('click', e => {const btn=e.target.closest('.select-toggle'); if(btn){toggleFp(btn.dataset.fp); return;} if(e.target.classList.contains('copy-one')){const t=e.target.closest('.share-block').querySelector('textarea').value; navigator.clipboard.writeText(t).then(()=>alert('복사 완료')).catch(()=>alert('textarea 내용을 직접 복사해주세요.'));}});
+document.addEventListener('change', e => {if(e.target.classList.contains('job-check')) toggleFp(e.target.value, e.target.checked);});
+document.getElementById('clearSelection').addEventListener('click', () => {selectedFps.clear(); updateSelectionUI();});
+document.getElementById('makeAllKakao').addEventListener('click', renderShareBlocks);
+document.getElementById('copyAllKakao').addEventListener('click', async () => {const text=Array.from(document.querySelectorAll('#shareBlocks textarea')).map(t=>t.value).join('\n\n--------------------\n\n'); try{await navigator.clipboard.writeText(text); alert('전체 복사 완료');}catch(e){alert('복사가 안 되면 각 textarea 내용을 직접 복사해주세요.');}});
+document.getElementById('makeJson').addEventListener('click', () => {const job=getSelectedJobs()[0]; if(!job){alert('JSON으로 만들 공고 1개를 선택해주세요.'); return;} const zone=document.getElementById('jsonZone'); zone.innerHTML=`<div class="result-header"><span class="result-title">Figma용 JSON</span><div class="window-controls"><button class="window-btn" type="button" title="접기/펼치기" onclick="toggleResultCollapse('jsonZone', this)">—</button><button class="window-btn" type="button" title="전체화면/복원" onclick="toggleResultFullscreen('jsonZone', this)">□</button><button class="window-btn close" type="button" title="닫기" onclick="closeResultPanel('jsonZone')">×</button></div></div><div class="result-body"><p class="manual-note">이미지 미리보기 없이 구조화된 JSON만 생성합니다. 필드를 수정하면 아래 JSON이 자동으로 갱신됩니다.</p>${createJsonEditor(job)}</div>`; zone.classList.remove('collapsed','fullscreen'); document.body.classList.remove('body-lock'); zone.classList.add('active'); zone.querySelectorAll('input, textarea').forEach(el=>{if(el.id.startsWith('f_')) el.addEventListener('input',()=>refreshJsonPreview(job.fingerprint));}); refreshJsonPreview(job.fingerprint); zone.scrollIntoView({behavior:'smooth', block:'start'});});
+updateSelectionUI();
+</script>
+</body>
+</html>
