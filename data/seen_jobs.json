@@ -3,7 +3,7 @@
     "version": 3,
     "platforms": {
       "링커리어": {
-        "last_run_at": "2026-07-18 17:52:27",
+        "last_run_at": "2026-07-19 18:09:10",
         "last_run_mode": "incremental",
         "categories": {
           "마케팅": {
@@ -30,7 +30,7 @@
         "initialized_at": "2026-07-15 18:04:25"
       },
       "원티드": {
-        "last_run_at": "2026-07-18 17:52:27",
+        "last_run_at": "2026-07-19 18:09:10",
         "last_run_mode": "incremental",
         "categories": {
           "마케팅": {
@@ -58,8 +58,8 @@
       }
     },
     "initialized_at": "2026-07-15 18:04:25",
-    "last_run_at": "2026-07-18 17:52:27",
-    "last_run_date": "2026-07-18",
+    "last_run_at": "2026-07-19 18:09:10",
+    "last_run_date": "2026-07-19",
     "last_run_mode": "incremental"
   },
   "486b771ac5b8622e": {
