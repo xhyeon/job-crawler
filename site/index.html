@@ -12,6 +12,7 @@ body{margin:0;padding:18px;background:#fff;color:#0f172a;font-family:Pretendard,
 .wrap{max-width:1060px;margin:0 auto}
 .hdr{text-align:center;margin-bottom:14px;padding:22px 18px;background:linear-gradient(135deg,#eff6ff,#f5f3ff);border:1px solid #e2e8f0;border-radius:18px}
 .hdr h1{font-size:24px;margin:0 0 8px;font-weight:950;letter-spacing:-.03em}.sub{color:#64748b;font-size:12px;line-height:1.55}.badge{display:inline-flex;margin:10px 3px 0;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:850}.badge.total{background:#dbeafe;color:#1d4ed8}.badge.new{background:#ffe4e6;color:#be123c}.badge.yesterday{background:#e0f2fe;color:#0369a1}
+.run-status{margin:12px auto 0;max-width:760px;padding:9px 12px;border-radius:10px;font-size:12px;font-weight:850;line-height:1.5}.run-status.updated{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0}.run-status.no_new{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}.run-status.error{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}.run-status.baseline{background:#fefce8;color:#a16207;border:1px solid #fde68a}.run-status.test{background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe}
 .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:14px}.sum-card{display:block;text-decoration:none;text-align:center;padding:12px 8px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;transition:.2s;box-shadow:0 6px 18px rgba(15,23,42,.04)}.sum-card:hover{transform:translateY(-2px);background:#f8fafc}.sum-icon{font-size:20px;margin-bottom:3px}.sum-num{font-size:22px;font-weight:950}.sum-label{font-size:11px;color:#64748b;font-weight:750;margin-top:2px}
 .tool-panel{position:sticky;top:10px;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border:1px solid #e2e8f0;border-radius:16px;padding:14px;margin:0 0 18px;box-shadow:0 12px 36px rgba(15,23,42,.09)}.tool-panel h2{border:0;margin:0 0 8px;padding:0;color:#0f172a;font-size:17px}.tool-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.selected-count{font-size:12px;color:#334155;font-weight:850;margin-right:auto}.tool-btn{border:0;border-radius:10px;padding:9px 12px;background:#2563eb;color:#fff;font-weight:900;cursor:pointer}.tool-btn.secondary{background:#f1f5f9;color:#0f172a;border:1px solid #cbd5e1}.tool-btn.pink{background:#7c3aed}.tool-btn:disabled{opacity:.42;cursor:not-allowed}.hint{font-size:12px;color:#64748b;line-height:1.55;margin:8px 0 0}
 .output-box,.json-zone{display:none;margin-top:12px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px}.output-box.active,.json-zone.active{display:block}.json-zone.active{max-height:min(78vh,780px);overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;-webkit-overflow-scrolling:touch}.json-zone.fullscreen{max-height:none!important;overflow-y:auto!important}.result-panel{position:relative}.result-panel.collapsed>.result-body{display:none}.result-panel.fullscreen{position:fixed!important;inset:14px!important;z-index:9999!important;margin:0!important;overflow:auto!important;background:#fff!important;border:1px solid #cbd5e1!important;border-radius:16px!important;padding:14px!important;box-shadow:0 24px 80px rgba(15,23,42,.2)!important}.result-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;position:sticky;top:0;z-index:3;background:inherit;padding:2px 0 8px}.result-title{font-weight:950}.window-controls{display:flex;gap:6px;margin-left:auto}.window-btn{width:30px;height:30px;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc;color:#0f172a;font-weight:950;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}.window-btn:hover{background:#e2e8f0}.window-btn.close:hover{background:#fee2e2;border-color:#f87171;color:#b91c1c}.result-panel.collapsed .result-header{margin-bottom:0}.body-lock{overflow:hidden}
@@ -25,39 +26,40 @@ section{margin-bottom:24px}section h2{font-size:18px;font-weight:950;margin:0 0 
 <div class="wrap">
   <header class="hdr">
     <h1>📋 채용공고 모음</h1>
-    <div class="sub">수집 시각 2026년 07월 19일 18:09<br>카톡 공유글과 Figma용 JSON은 선택한 공고를 기준으로 생성됩니다. · JSON 전용 라이트 버전</div>
-    <span class="badge total">전체 0건</span>
+    <div class="sub">수집 시각 2026년 07월 19일 21:37<br>카톡 공유글과 Figma용 JSON은 선택한 공고를 기준으로 생성됩니다. · JSON 전용 라이트 버전</div>
+    <span class="badge total">전체 56건</span>
     <span class="badge new">오늘 신규 0건</span>
     <span class="badge yesterday">어제 발견 0건</span>
+    <div class="run-status error">일부 플랫폼 수집에 실패하여 마지막 정상 수집 공고를 표시합니다. (공고 기준일: 2026-07-16)</div>
   </header>
   <div class="summary">
         <a href="#section-마케팅" class="sum-card" style="border-color:#F472B630;">
           <div class="sum-icon">📢</div>
-          <div class="sum-num" style="color:#F472B6;">0</div>
+          <div class="sum-num" style="color:#F472B6;">12</div>
           <div class="sum-label">마케팅 · 오늘 0 · 어제 0</div>
         </a>
         
         <a href="#section-기획" class="sum-card" style="border-color:#A78BFA30;">
           <div class="sum-icon">📐</div>
-          <div class="sum-num" style="color:#A78BFA;">0</div>
+          <div class="sum-num" style="color:#A78BFA;">6</div>
           <div class="sum-label">기획 · 오늘 0 · 어제 0</div>
         </a>
         
         <a href="#section-인사" class="sum-card" style="border-color:#34D39930;">
           <div class="sum-icon">🤝</div>
-          <div class="sum-num" style="color:#34D399;">0</div>
+          <div class="sum-num" style="color:#34D399;">2</div>
           <div class="sum-label">인사 · 오늘 0 · 어제 0</div>
         </a>
         
         <a href="#section-영업" class="sum-card" style="border-color:#FBBF2430;">
           <div class="sum-icon">💼</div>
-          <div class="sum-num" style="color:#FBBF24;">0</div>
+          <div class="sum-num" style="color:#FBBF24;">15</div>
           <div class="sum-label">영업 · 오늘 0 · 어제 0</div>
         </a>
         
         <a href="#section-개발" class="sum-card" style="border-color:#60A5FA30;">
           <div class="sum-icon">🤖</div>
-          <div class="sum-num" style="color:#60A5FA;">0</div>
+          <div class="sum-num" style="color:#60A5FA;">21</div>
           <div class="sum-label">개발 · 오늘 0 · 어제 0</div>
         </a>
         </div>
@@ -87,43 +89,1611 @@ section{margin-bottom:24px}section h2{font-size:18px;font-weight:950;margin:0 0 
   
         <section class="cat-section" id="section-마케팅">
           <h2 style="color:#F472B6;border-bottom:3px solid #F472B6;">
-            📢 마케팅 <span class="count-badge" style="background:#F472B622;color:#F472B6;">0건</span>
+            📢 마케팅 <span class="count-badge" style="background:#F472B622;color:#F472B6;">12건</span>
           </h2>
-          <div class="grid"><div class="empty-mini">수집된 공고 없음</div></div>
+          <div class="grid">
+        <article class="card " data-fp="d515e39036cb69f6">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="d515e39036cb69f6" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="d515e39036cb69f6">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#F472B6;">마케팅</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[전환형 인턴] 화상영어 링글 브랜드 &amp; 캠페인 마케팅</h3>
+          <div class="job-meta">
+            <div><span>회사</span>(주)링글잉글리시에듀케이션서비스</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336104" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="a0f43d49a1b34ad3">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="a0f43d49a1b34ad3" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="a0f43d49a1b34ad3">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#F472B6;">마케팅</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[계명대학교] 정규직 전환 계약직 공개경쟁채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>계명대학교</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335935" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="c964f100adba01b4">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="c964f100adba01b4" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="c964f100adba01b4">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#F472B6;">마케팅</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[더에스엠씨] [사업관리] 크리에이터 파트너십(CP) 신입/경력 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>더에스엠씨</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335987" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="1615d1e95d91cb37">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="1615d1e95d91cb37" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="1615d1e95d91cb37">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#F472B6;">마케팅</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[셀로라] 영상 콘텐츠 마케터 (신입 가능)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>셀로라</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336052" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="3e87148122abffc2">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="3e87148122abffc2" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="3e87148122abffc2">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#F472B6;">마케팅</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[셀로라] 일본 콘텐츠 마케터 채용 (신입 가능)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>셀로라</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336064" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="7fa88fb686dabb9c">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="7fa88fb686dabb9c" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="7fa88fb686dabb9c">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#F472B6;">마케팅</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[셀로라] 콘텐츠 마케터 (신입가능)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>셀로라</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336050" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="7f93db0aebc2227b">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="7f93db0aebc2227b" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="7f93db0aebc2227b">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#F472B6;">마케팅</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[식품안전정보원] 2026년 제2차 기간제 직원 모집 공고</h3>
+          <div class="job-meta">
+            <div><span>회사</span>식품안전정보원</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336134" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="431ae122776f34b6">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="431ae122776f34b6" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="431ae122776f34b6">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#F472B6;">마케팅</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">Account Manager (신입-경력 2년 미만)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>오픈서베이</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335982" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="63d3c6831b0c4937">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="63d3c6831b0c4937" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="63d3c6831b0c4937">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#F472B6;">마케팅</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[ANUA 아누아] 홍콩 인플루언서 마케팅 인턴</h3>
+          <div class="job-meta">
+            <div><span>회사</span>주식회사 더파운더즈</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336087" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="2b30b7a970121eb1">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="2b30b7a970121eb1" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="2b30b7a970121eb1">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#F472B6;">마케팅</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">캠페인 &amp; 프로모션 마케터 (계약직)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>주식회사 버킷플레이스</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335822" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="d1f89e9adb71b9e1">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="d1f89e9adb71b9e1" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="d1f89e9adb71b9e1">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#F472B6;">마케팅</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[중앙대학교병원] 디지털전략팀 행정직 (계약직) 모집 (2026.07)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>중앙대학교병원</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335937" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="811f323ec2e51ed0">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="811f323ec2e51ed0" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="811f323ec2e51ed0">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#F472B6;">마케팅</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[포컴퍼니] [글로벌] 틱톡샵 어필리에이트 마케터 (채용연계형 인턴) _Abib</h3>
+          <div class="job-meta">
+            <div><span>회사</span>포컴퍼니</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335817" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        </div>
         </section>
         
         <section class="cat-section" id="section-기획">
           <h2 style="color:#A78BFA;border-bottom:3px solid #A78BFA;">
-            📐 기획 <span class="count-badge" style="background:#A78BFA22;color:#A78BFA;">0건</span>
+            📐 기획 <span class="count-badge" style="background:#A78BFA22;color:#A78BFA;">6건</span>
           </h2>
-          <div class="grid"><div class="empty-mini">수집된 공고 없음</div></div>
+          <div class="grid">
+        <article class="card " data-fp="b0169e5e01ed3f27">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="b0169e5e01ed3f27" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="b0169e5e01ed3f27">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#A78BFA;">기획</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[NH농협은행] NH카드분사 카드마케팅2팀 전문계약직 직원 채용공고</h3>
+          <div class="job-meta">
+            <div><span>회사</span>NH농협은행</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336039" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="c14da12396dec75a">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="c14da12396dec75a" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="c14da12396dec75a">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#A78BFA;">기획</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[나이스디앤비] 통합지원센터 기업평가 접수 부문 인재 영입 (단기 2~3개월)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>나이스디앤비</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336117" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="5293ecc60a358f0f">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="5293ecc60a358f0f" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="5293ecc60a358f0f">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#A78BFA;">기획</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[CIC STAFF] 전략 스태프 인턴 (전환형 인턴)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>블랭크코퍼레이션</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336124" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="0197ae02c8f32dea">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="0197ae02c8f32dea" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="0197ae02c8f32dea">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#A78BFA;">기획</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">정보통신기획평가원 직원 채용(전문직)공고</h3>
+          <div class="job-meta">
+            <div><span>회사</span>정보통신기획평가원</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336022" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="fd2f03ef9af429f4">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="fd2f03ef9af429f4" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="fd2f03ef9af429f4">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#A78BFA;">기획</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">Research Assistant</h3>
+          <div class="job-meta">
+            <div><span>회사</span>주식회사 라포랩스</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336073" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="d91dcf57373bab62">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="d91dcf57373bab62" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="d91dcf57373bab62">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#A78BFA;">기획</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[토스플레이스] Research Assistant</h3>
+          <div class="job-meta">
+            <div><span>회사</span>토스플레이스</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336063" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        </div>
         </section>
         
         <section class="cat-section" id="section-인사">
           <h2 style="color:#34D399;border-bottom:3px solid #34D399;">
-            🤝 인사 <span class="count-badge" style="background:#34D39922;color:#34D399;">0건</span>
+            🤝 인사 <span class="count-badge" style="background:#34D39922;color:#34D399;">2건</span>
           </h2>
-          <div class="grid"><div class="empty-mini">수집된 공고 없음</div></div>
+          <div class="grid">
+        <article class="card " data-fp="ed7d9d48a898fd3c">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="ed7d9d48a898fd3c" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="ed7d9d48a898fd3c">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#34D399;">인사</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[삼일회계법인] 조직문화 &amp; 변화관리 지원 인턴 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>삼일회계법인</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335846" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="5a41d790f674d59e">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="5a41d790f674d59e" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="5a41d790f674d59e">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#34D399;">인사</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[서희건설] 인사팀 신입 및 경력 채용(~채용 시 마감)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>서희건설</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335852" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        </div>
         </section>
         
         <section class="cat-section" id="section-영업">
           <h2 style="color:#FBBF24;border-bottom:3px solid #FBBF24;">
-            💼 영업 <span class="count-badge" style="background:#FBBF2422;color:#FBBF24;">0건</span>
+            💼 영업 <span class="count-badge" style="background:#FBBF2422;color:#FBBF24;">15건</span>
           </h2>
-          <div class="grid"><div class="empty-mini">수집된 공고 없음</div></div>
+          <div class="grid">
+        <article class="card " data-fp="b09fe60e6cb67a68">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="b09fe60e6cb67a68" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="b09fe60e6cb67a68">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[전환형 인턴] 화상영어 링글 틴즈 Teens 세일즈</h3>
+          <div class="job-meta">
+            <div><span>회사</span>(주)링글잉글리시에듀케이션서비스</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336101" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="5d9aa31962ff09c9">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="5d9aa31962ff09c9" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="5d9aa31962ff09c9">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[NH농협생명] 업무지원파트 일반계약직 채용 공고</h3>
+          <div class="job-meta">
+            <div><span>회사</span>NH농협생명</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336074" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="a957e79d1f51cc09">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="a957e79d1f51cc09" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="a957e79d1f51cc09">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[NH농협은행] 고객행복센터(인천센터) 일반계약직 직원 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>NH농협은행</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336088" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="c80f7baaac8ec9e0">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="c80f7baaac8ec9e0" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="c80f7baaac8ec9e0">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[SK렌터카] B2B/B2C 장기렌터카 신규영업 담당자 (1년계약직 정규직 전환 가능)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>SK렌터카</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336004" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="f7d45c1c15366a3c">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="f7d45c1c15366a3c" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="f7d45c1c15366a3c">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[농협경제지주] 안성농식품물류센터 영업지원직 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>농협경제지주</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336097" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="c764f0c8ad641b02">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="c764f0c8ad641b02" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="c764f0c8ad641b02">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[농협경제지주] 안성농식품물류센터 영업지원직 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>농협경제지주</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336094" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="f1b5a0aa3fae5234">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="f1b5a0aa3fae5234" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="f1b5a0aa3fae5234">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[더에스엠씨] [기획직군] B2B 마케터 경력 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>더에스엠씨</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336008" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="721ae6a02b8388ed">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="721ae6a02b8388ed" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="721ae6a02b8388ed">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[라카코스메틱스] 글로벌 채널 틱톡샵 CS담당 Assistant</h3>
+          <div class="job-meta">
+            <div><span>회사</span>라카코스메틱스</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336110" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="48b57074c0bb10de">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="48b57074c0bb10de" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="48b57074c0bb10de">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[링글잉글리시에듀케이션서비스] [전환형 인턴] Teens - Business Development (Sales)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>링글잉글리시에듀케이션서비스</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335845" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="ba57ce13bc15a58e">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="ba57ce13bc15a58e" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="ba57ce13bc15a58e">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[에프앤가이드] [법인영업팀] 신입/경력 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>에프앤가이드</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335945" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="922c86a3c2ba33a6">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="922c86a3c2ba33a6" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="922c86a3c2ba33a6">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[오픈서베이] Account Manager(신입-경력 2년 미만)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>오픈서베이</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335847" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="f040e16c5e9f8a10">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="f040e16c5e9f8a10" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="f040e16c5e9f8a10">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">CX Operator (재택, 1년 계약직)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>주식회사 크리에이트립</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336098" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="64cb12ea0df01c6c">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="64cb12ea0df01c6c" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="64cb12ea0df01c6c">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[티에이치엔] (광주)모트라스 상주원 모집</h3>
+          <div class="job-meta">
+            <div><span>회사</span>티에이치엔</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335904" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="1abce44d9f3d5086">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="1abce44d9f3d5086" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="1abce44d9f3d5086">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[한국사회보장정보원] 2026년도 제3차 직원 채용공고</h3>
+          <div class="job-meta">
+            <div><span>회사</span>한국사회보장정보원</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336118" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="e3bb1f43ebffca81">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="e3bb1f43ebffca81" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="e3bb1f43ebffca81">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#FBBF24;">영업</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[한양증권] 멀티영업본부(리테일) 채용연계형 인턴 채용 공고</h3>
+          <div class="job-meta">
+            <div><span>회사</span>한양증권</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336009" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        </div>
         </section>
         
         <section class="cat-section" id="section-개발">
           <h2 style="color:#60A5FA;border-bottom:3px solid #60A5FA;">
-            🤖 개발 <span class="count-badge" style="background:#60A5FA22;color:#60A5FA;">0건</span>
+            🤖 개발 <span class="count-badge" style="background:#60A5FA22;color:#60A5FA;">21건</span>
           </h2>
-          <div class="grid"><div class="empty-mini">수집된 공고 없음</div></div>
+          <div class="grid">
+        <article class="card " data-fp="680f0919d044355f">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="680f0919d044355f" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="680f0919d044355f">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[안랩] 2026년 안랩 하반기 체험형 인턴</h3>
+          <div class="job-meta">
+            <div><span>회사</span>(주)안랩</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336105" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="33a2edae382d7064">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="33a2edae382d7064" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="33a2edae382d7064">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">Endpoint Security Engineer (Junior)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>AB180</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335948" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="79559c66294f0e11">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="79559c66294f0e11" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="79559c66294f0e11">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[KG이니시스] PG승인팀 정규직 채용(신입)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>KG이니시스</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335851" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="af8f8f7142dad4c8">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="af8f8f7142dad4c8" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="af8f8f7142dad4c8">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[NH농협은행] ESG기획단 사회공헌·행복금융팀 일반계약직 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>NH농협은행</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336082" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="ad5417ce56f61f54">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="ad5417ce56f61f54" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="ad5417ce56f61f54">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[NH농협은행] 투자상품부 방카슈랑스팀 전문계약직 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>NH농협은행</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336031" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="43825c131561dabf">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="43825c131561dabf" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="43825c131561dabf">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[SK텔레콤] 유선망 현황관리 및 사무지원 담당자</h3>
+          <div class="job-meta">
+            <div><span>회사</span>SK텔레콤</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336011" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="9ed6db74be5de4ae">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="9ed6db74be5de4ae" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="9ed6db74be5de4ae">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[IPX] LINE Family Service Front-end Engineer Intern (체험형)</h3>
+          <div class="job-meta">
+            <div><span>회사</span>라인프렌즈 주식회사</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335980" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="ea1090b03593cb94">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="ea1090b03593cb94" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="ea1090b03593cb94">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[루미르] PCB Artwork 설계 엔지니어</h3>
+          <div class="job-meta">
+            <div><span>회사</span>루미르</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336012" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="00a087fa8d3e072d">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="00a087fa8d3e072d" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="00a087fa8d3e072d">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[루미르] 전력전자 하드웨어 개발 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>루미르</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336014" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="4747fda5f2b15ed3">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="4747fda5f2b15ed3" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="4747fda5f2b15ed3">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[마이다스아이티] 지반 분야 고객 교육 및 기술지원 담당자 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>마이다스아이티</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335905" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="8a7d54c8def7a108">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="8a7d54c8def7a108" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="8a7d54c8def7a108">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[모아저축은행] 2026년 하반기 채용연계형 인턴 모집</h3>
+          <div class="job-meta">
+            <div><span>회사</span>모아저축은행</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335979" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="db0149c9190a33d0">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="db0149c9190a33d0" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="db0149c9190a33d0">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[베인앤드컴퍼니] IT support (Helpdesk) 인턴 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>베인앤드컴퍼니코리아</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336002" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="0f432b0e0b3deb43">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="0f432b0e0b3deb43" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="0f432b0e0b3deb43">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">SS&amp;C 블루프리즘 엔터프라이즈 AI 에이전트 개발 인턴 모집</h3>
+          <div class="job-meta">
+            <div><span>회사</span>블루프리즘 코리아</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/336003" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="e1bcc2e0790c1b74">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="e1bcc2e0790c1b74" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="e1bcc2e0790c1b74">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[삼진제약] 각 부문별 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>삼진제약</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335932" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="23fb114e59d7d915">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="23fb114e59d7d915" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="23fb114e59d7d915">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[삼화콘덴서공업] ERP팀 외 4개 부문 신입/경력사원 채용의 건</h3>
+          <div class="job-meta">
+            <div><span>회사</span>삼화콘덴서공업</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335853" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="8b516b638600a92e">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="8b516b638600a92e" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="8b516b638600a92e">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[씨티알모빌리티] CTR Mobility 품질관리팀 품질관리 (서산) 신입 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>씨티알모빌리티</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335955" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="85abe2c45fa3e2ee">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="85abe2c45fa3e2ee" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="85abe2c45fa3e2ee">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[에프앤가이드] [AI팀] 인턴 채용</h3>
+          <div class="job-meta">
+            <div><span>회사</span>에프앤가이드</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335949" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="04eb2b7b6a2923aa">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="04eb2b7b6a2923aa" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="04eb2b7b6a2923aa">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[연구개발특구진흥재단] 2026년 제2차 직원채용 공고</h3>
+          <div class="job-meta">
+            <div><span>회사</span>연구개발특구진흥재단</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335841" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="0d8dd002811954b6">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="0d8dd002811954b6" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="0d8dd002811954b6">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[인애이블퓨전] 2026 하반기 공개채용 공고</h3>
+          <div class="job-meta">
+            <div><span>회사</span>인애이블퓨전</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335844" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="c86c85d620d53c70">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="c86c85d620d53c70" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="c86c85d620d53c70">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[하나머티리얼즈] [신입] 반도체 및 디스플레이용 실리콘계 세라믹 신소재 개발 (연구직) 모집</h3>
+          <div class="job-meta">
+            <div><span>회사</span>하나머티리얼즈</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335850" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        
+        <article class="card " data-fp="3b43f1b2d0c58597">
+          <div class="select-top">
+            <label class="check-label">
+              <input type="checkbox" class="job-check" value="3b43f1b2d0c58597" aria-label="공고 선택">
+              <span>선택</span>
+            </label>
+            <button class="select-toggle" type="button" data-fp="3b43f1b2d0c58597">JSON용 선택</button>
+            <span class="desc-pill manual">본문 없음</span>
+          </div>
+          <div class="platform-line">
+            <span class="platform-dot" style="background:#00C473;"></span>
+            <span class="platform-name">링커리어</span>
+            <span class="status-badge old">기존</span>
+          </div>
+          <div class="category-line" style="color:#60A5FA;">개발</div>
+          <div class="date-line">
+            <span><b>시작</b> 확인 필요</span>
+            <span><b>마감</b> 마감일 확인 필요</span>
+          </div>
+          <h3 class="job-title">[한국발명진흥회] 2026년 정규직(6급 채용형 인턴) 채용공고</h3>
+          <div class="job-meta">
+            <div><span>회사</span>한국발명진흥회</div>
+            <div><span>고용형태</span>공고 내 고용조건 항목 없음</div>
+            <div><span>직무</span>직무 확인 필요</div>
+          </div>
+          <a href="https://linkareer.com/activity/335910" target="_blank" rel="noopener noreferrer" class="btn">공고 확인하기</a>
+        </article>
+        </div>
         </section>
         
   <footer class="ft">Generated by Selenium job crawler · OCR은 하지 않습니다. 상세내용 영역에서 텍스트만 자동 저장하고, 이미지형 공고는 JSON 필드를 직접 입력하면 됩니다.</footer>
 </div>
 <script>
-const JOBS = [];
+const JOBS = [{"title": "[전환형 인턴] 화상영어 링글 브랜드 & 캠페인 마케팅", "company": "(주)링글잉글리시에듀케이션서비스", "platform": "링커리어", "category": "마케팅", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336104", "detail_url": "https://linkareer.com/activity/336104", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "d515e39036cb69f6"}, {"title": "[계명대학교] 정규직 전환 계약직 공개경쟁채용", "company": "계명대학교", "platform": "링커리어", "category": "마케팅", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335935", "detail_url": "https://linkareer.com/activity/335935", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "a0f43d49a1b34ad3"}, {"title": "[더에스엠씨] [사업관리] 크리에이터 파트너십(CP) 신입/경력 채용", "company": "더에스엠씨", "platform": "링커리어", "category": "마케팅", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335987", "detail_url": "https://linkareer.com/activity/335987", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "c964f100adba01b4"}, {"title": "[셀로라] 영상 콘텐츠 마케터 (신입 가능)", "company": "셀로라", "platform": "링커리어", "category": "마케팅", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336052", "detail_url": "https://linkareer.com/activity/336052", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "1615d1e95d91cb37"}, {"title": "[셀로라] 일본 콘텐츠 마케터 채용 (신입 가능)", "company": "셀로라", "platform": "링커리어", "category": "마케팅", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336064", "detail_url": "https://linkareer.com/activity/336064", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "3e87148122abffc2"}, {"title": "[셀로라] 콘텐츠 마케터 (신입가능)", "company": "셀로라", "platform": "링커리어", "category": "마케팅", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336050", "detail_url": "https://linkareer.com/activity/336050", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "7fa88fb686dabb9c"}, {"title": "[식품안전정보원] 2026년 제2차 기간제 직원 모집 공고", "company": "식품안전정보원", "platform": "링커리어", "category": "마케팅", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336134", "detail_url": "https://linkareer.com/activity/336134", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "7f93db0aebc2227b"}, {"title": "Account Manager (신입-경력 2년 미만)", "company": "오픈서베이", "platform": "링커리어", "category": "마케팅", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335982", "detail_url": "https://linkareer.com/activity/335982", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "431ae122776f34b6"}, {"title": "[ANUA 아누아] 홍콩 인플루언서 마케팅 인턴", "company": "주식회사 더파운더즈", "platform": "링커리어", "category": "마케팅", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336087", "detail_url": "https://linkareer.com/activity/336087", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "63d3c6831b0c4937"}, {"title": "캠페인 & 프로모션 마케터 (계약직)", "company": "주식회사 버킷플레이스", "platform": "링커리어", "category": "마케팅", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335822", "detail_url": "https://linkareer.com/activity/335822", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "2b30b7a970121eb1"}, {"title": "[중앙대학교병원] 디지털전략팀 행정직 (계약직) 모집 (2026.07)", "company": "중앙대학교병원", "platform": "링커리어", "category": "마케팅", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335937", "detail_url": "https://linkareer.com/activity/335937", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "d1f89e9adb71b9e1"}, {"title": "[포컴퍼니] [글로벌] 틱톡샵 어필리에이트 마케터 (채용연계형 인턴) _Abib", "company": "포컴퍼니", "platform": "링커리어", "category": "마케팅", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335817", "detail_url": "https://linkareer.com/activity/335817", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "811f323ec2e51ed0"}, {"title": "[NH농협은행] NH카드분사 카드마케팅2팀 전문계약직 직원 채용공고", "company": "NH농협은행", "platform": "링커리어", "category": "기획", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336039", "detail_url": "https://linkareer.com/activity/336039", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "b0169e5e01ed3f27"}, {"title": "[나이스디앤비] 통합지원센터 기업평가 접수 부문 인재 영입 (단기 2~3개월)", "company": "나이스디앤비", "platform": "링커리어", "category": "기획", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336117", "detail_url": "https://linkareer.com/activity/336117", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "c14da12396dec75a"}, {"title": "[CIC STAFF] 전략 스태프 인턴 (전환형 인턴)", "company": "블랭크코퍼레이션", "platform": "링커리어", "category": "기획", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336124", "detail_url": "https://linkareer.com/activity/336124", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "5293ecc60a358f0f"}, {"title": "정보통신기획평가원 직원 채용(전문직)공고", "company": "정보통신기획평가원", "platform": "링커리어", "category": "기획", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336022", "detail_url": "https://linkareer.com/activity/336022", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "0197ae02c8f32dea"}, {"title": "Research Assistant", "company": "주식회사 라포랩스", "platform": "링커리어", "category": "기획", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336073", "detail_url": "https://linkareer.com/activity/336073", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "fd2f03ef9af429f4"}, {"title": "[토스플레이스] Research Assistant", "company": "토스플레이스", "platform": "링커리어", "category": "기획", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336063", "detail_url": "https://linkareer.com/activity/336063", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "d91dcf57373bab62"}, {"title": "[삼일회계법인] 조직문화 & 변화관리 지원 인턴 채용", "company": "삼일회계법인", "platform": "링커리어", "category": "인사", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335846", "detail_url": "https://linkareer.com/activity/335846", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "ed7d9d48a898fd3c"}, {"title": "[서희건설] 인사팀 신입 및 경력 채용(~채용 시 마감)", "company": "서희건설", "platform": "링커리어", "category": "인사", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335852", "detail_url": "https://linkareer.com/activity/335852", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "5a41d790f674d59e"}, {"title": "[전환형 인턴] 화상영어 링글 틴즈 Teens 세일즈", "company": "(주)링글잉글리시에듀케이션서비스", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336101", "detail_url": "https://linkareer.com/activity/336101", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "b09fe60e6cb67a68"}, {"title": "[NH농협생명] 업무지원파트 일반계약직 채용 공고", "company": "NH농협생명", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336074", "detail_url": "https://linkareer.com/activity/336074", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "5d9aa31962ff09c9"}, {"title": "[NH농협은행] 고객행복센터(인천센터) 일반계약직 직원 채용", "company": "NH농협은행", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336088", "detail_url": "https://linkareer.com/activity/336088", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "a957e79d1f51cc09"}, {"title": "[SK렌터카] B2B/B2C 장기렌터카 신규영업 담당자 (1년계약직 정규직 전환 가능)", "company": "SK렌터카", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336004", "detail_url": "https://linkareer.com/activity/336004", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "c80f7baaac8ec9e0"}, {"title": "[농협경제지주] 안성농식품물류센터 영업지원직 채용", "company": "농협경제지주", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336097", "detail_url": "https://linkareer.com/activity/336097", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "f7d45c1c15366a3c"}, {"title": "[농협경제지주] 안성농식품물류센터 영업지원직 채용", "company": "농협경제지주", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336094", "detail_url": "https://linkareer.com/activity/336094", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "c764f0c8ad641b02"}, {"title": "[더에스엠씨] [기획직군] B2B 마케터 경력 채용", "company": "더에스엠씨", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336008", "detail_url": "https://linkareer.com/activity/336008", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "f1b5a0aa3fae5234"}, {"title": "[라카코스메틱스] 글로벌 채널 틱톡샵 CS담당 Assistant", "company": "라카코스메틱스", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336110", "detail_url": "https://linkareer.com/activity/336110", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "721ae6a02b8388ed"}, {"title": "[링글잉글리시에듀케이션서비스] [전환형 인턴] Teens - Business Development (Sales)", "company": "링글잉글리시에듀케이션서비스", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335845", "detail_url": "https://linkareer.com/activity/335845", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "48b57074c0bb10de"}, {"title": "[에프앤가이드] [법인영업팀] 신입/경력 채용", "company": "에프앤가이드", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335945", "detail_url": "https://linkareer.com/activity/335945", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "ba57ce13bc15a58e"}, {"title": "[오픈서베이] Account Manager(신입-경력 2년 미만)", "company": "오픈서베이", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335847", "detail_url": "https://linkareer.com/activity/335847", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "922c86a3c2ba33a6"}, {"title": "CX Operator (재택, 1년 계약직)", "company": "주식회사 크리에이트립", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336098", "detail_url": "https://linkareer.com/activity/336098", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "f040e16c5e9f8a10"}, {"title": "[티에이치엔] (광주)모트라스 상주원 모집", "company": "티에이치엔", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335904", "detail_url": "https://linkareer.com/activity/335904", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "64cb12ea0df01c6c"}, {"title": "[한국사회보장정보원] 2026년도 제3차 직원 채용공고", "company": "한국사회보장정보원", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336118", "detail_url": "https://linkareer.com/activity/336118", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "1abce44d9f3d5086"}, {"title": "[한양증권] 멀티영업본부(리테일) 채용연계형 인턴 채용 공고", "company": "한양증권", "platform": "링커리어", "category": "영업", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336009", "detail_url": "https://linkareer.com/activity/336009", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "e3bb1f43ebffca81"}, {"title": "[안랩] 2026년 안랩 하반기 체험형 인턴", "company": "(주)안랩", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336105", "detail_url": "https://linkareer.com/activity/336105", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "680f0919d044355f"}, {"title": "Endpoint Security Engineer (Junior)", "company": "AB180", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335948", "detail_url": "https://linkareer.com/activity/335948", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "33a2edae382d7064"}, {"title": "[KG이니시스] PG승인팀 정규직 채용(신입)", "company": "KG이니시스", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335851", "detail_url": "https://linkareer.com/activity/335851", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "79559c66294f0e11"}, {"title": "[NH농협은행] ESG기획단 사회공헌·행복금융팀 일반계약직 채용", "company": "NH농협은행", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336082", "detail_url": "https://linkareer.com/activity/336082", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "af8f8f7142dad4c8"}, {"title": "[NH농협은행] 투자상품부 방카슈랑스팀 전문계약직 채용", "company": "NH농협은행", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336031", "detail_url": "https://linkareer.com/activity/336031", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "ad5417ce56f61f54"}, {"title": "[SK텔레콤] 유선망 현황관리 및 사무지원 담당자", "company": "SK텔레콤", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336011", "detail_url": "https://linkareer.com/activity/336011", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "43825c131561dabf"}, {"title": "[IPX] LINE Family Service Front-end Engineer Intern (체험형)", "company": "라인프렌즈 주식회사", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335980", "detail_url": "https://linkareer.com/activity/335980", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "9ed6db74be5de4ae"}, {"title": "[루미르] PCB Artwork 설계 엔지니어", "company": "루미르", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336012", "detail_url": "https://linkareer.com/activity/336012", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "ea1090b03593cb94"}, {"title": "[루미르] 전력전자 하드웨어 개발 채용", "company": "루미르", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336014", "detail_url": "https://linkareer.com/activity/336014", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "00a087fa8d3e072d"}, {"title": "[마이다스아이티] 지반 분야 고객 교육 및 기술지원 담당자 채용", "company": "마이다스아이티", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335905", "detail_url": "https://linkareer.com/activity/335905", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "4747fda5f2b15ed3"}, {"title": "[모아저축은행] 2026년 하반기 채용연계형 인턴 모집", "company": "모아저축은행", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335979", "detail_url": "https://linkareer.com/activity/335979", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "8a7d54c8def7a108"}, {"title": "[베인앤드컴퍼니] IT support (Helpdesk) 인턴 채용", "company": "베인앤드컴퍼니코리아", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336002", "detail_url": "https://linkareer.com/activity/336002", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "db0149c9190a33d0"}, {"title": "SS&C 블루프리즘 엔터프라이즈 AI 에이전트 개발 인턴 모집", "company": "블루프리즘 코리아", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/336003", "detail_url": "https://linkareer.com/activity/336003", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "0f432b0e0b3deb43"}, {"title": "[삼진제약] 각 부문별 채용", "company": "삼진제약", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335932", "detail_url": "https://linkareer.com/activity/335932", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "e1bcc2e0790c1b74"}, {"title": "[삼화콘덴서공업] ERP팀 외 4개 부문 신입/경력사원 채용의 건", "company": "삼화콘덴서공업", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335853", "detail_url": "https://linkareer.com/activity/335853", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "23fb114e59d7d915"}, {"title": "[씨티알모빌리티] CTR Mobility 품질관리팀 품질관리 (서산) 신입 채용", "company": "씨티알모빌리티", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335955", "detail_url": "https://linkareer.com/activity/335955", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "8b516b638600a92e"}, {"title": "[에프앤가이드] [AI팀] 인턴 채용", "company": "에프앤가이드", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335949", "detail_url": "https://linkareer.com/activity/335949", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "85abe2c45fa3e2ee"}, {"title": "[연구개발특구진흥재단] 2026년 제2차 직원채용 공고", "company": "연구개발특구진흥재단", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335841", "detail_url": "https://linkareer.com/activity/335841", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "04eb2b7b6a2923aa"}, {"title": "[인애이블퓨전] 2026 하반기 공개채용 공고", "company": "인애이블퓨전", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335844", "detail_url": "https://linkareer.com/activity/335844", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "0d8dd002811954b6"}, {"title": "[하나머티리얼즈] [신입] 반도체 및 디스플레이용 실리콘계 세라믹 신소재 개발 (연구직) 모집", "company": "하나머티리얼즈", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335850", "detail_url": "https://linkareer.com/activity/335850", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "c86c85d620d53c70"}, {"title": "[한국발명진흥회] 2026년 정규직(6급 채용형 인턴) 채용공고", "company": "한국발명진흥회", "platform": "링커리어", "category": "개발", "deadline": "마감일 확인 필요", "link": "https://linkareer.com/activity/335910", "detail_url": "https://linkareer.com/activity/335910", "apply_url": "", "start_date": "", "job_type": "", "raw_category": "", "description_type": "", "description_text": "", "is_new": false, "first_seen_at": "2026-07-16 18:21:28", "fingerprint": "3b43f1b2d0c58597"}];
 const CATEGORY_ORDER = ["마케팅", "기획", "인사", "영업", "개발"];
 const CATEGORY_LABELS = {"기획":"기획/운영", "마케팅":"마케팅", "인사":"인사", "영업":"영업", "개발":"개발"};
 const JOB_MAP = new Map(JOBS.map(j => [j.fingerprint, j]));
