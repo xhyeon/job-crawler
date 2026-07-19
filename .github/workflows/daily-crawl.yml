@@ -3,8 +3,8 @@ name: Daily Job Crawl
 on:
   schedule:
     # GitHub Actions cron은 UTC 기준입니다.
-    # 07:00 UTC = 한국시간(KST) 매일 오후 4:00
-    - cron: "0 7 * * *"
+    # 03:00 UTC = 한국시간(KST) 매일 낮 12:00
+    - cron: "0 3 * * *"
   workflow_dispatch:
 
 permissions:
@@ -22,6 +22,7 @@ jobs:
     name: Crawl and build site
     runs-on: ubuntu-latest
     timeout-minutes: 180
+
     env:
       TZ: Asia/Seoul
       PYTHONUNBUFFERED: "1"
@@ -69,7 +70,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/seen_jobs.json site/index.html site/jobs.csv site/jobs.json
+
+          git add \
+            data/seen_jobs.json \
+            site/index.html \
+            site/jobs.csv \
+            site/jobs.json
 
           if git diff --cached --quiet; then
             echo "변경된 크롤링 결과가 없습니다."
@@ -87,8 +93,8 @@ jobs:
           path: ./site
           include-hidden-files: true
 
-      - name: Upload debug files on failure
-        if: failure()
+      - name: Upload debug files
+        if: always()
         uses: actions/upload-artifact@v7
         with:
           name: crawler-debug-${{ github.run_id }}
@@ -102,6 +108,7 @@ jobs:
     name: Deploy GitHub Pages
     needs: crawl
     runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
