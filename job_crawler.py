@@ -1,11 +1,11 @@
 """
-채용공고 크롤러 JSON 전용 FINAL v6 (링커리어·원티드 통합)
+채용공고 크롤러 JSON 전용 (링커리어·원티드 통합)
 - 플랫폼: 링커리어, 원티드
 - 직군: 마케팅, 기획, 인사, 영업, 개발
 - 신규 기준: 공고의 게시일/시작일이 아니라 크롤러가 처음 발견한 날짜
 - 최초 실행: 직군별 리스트를 최대 10페이지까지 모두 확인해 기존 공고 기준 데이터를 생성
 - 이후 실행: 최신 페이지부터 확인하다 기존 공고만 나온 페이지에서 종료
-- 담당자 화면: 최초 발견일이 한국시간 기준 오늘 또는 어제인 공고만 노출
+- 담당자 화면: 최초 발견일이 한국시간 기준 최근 7일인 공고를 노출
 
 실행 예시
   pip install -r requirements.txt
@@ -83,10 +83,18 @@ try:
 except Exception:  # pragma: no cover
     ChromeDriverManager = None
 
-BASE_URL = (
-    "https://www.wanted.co.kr/wdlist?country=kr&job_sort=job.latest_order"
-    "&years=0&locations=all"
+WANTED_QUERY = (
+    "country=kr"
+    "&job_sort=job.latest_order"
+    "&years=0"
+    "&years=3"
+    "&locations=all"
 )
+
+BASE_URL = f"https://www.wanted.co.kr/wdlist?{WANTED_QUERY}"
+
+# 오늘을 포함한 최근 7일 동안 처음 발견한 공고를 담당자 화면에 유지합니다.
+DISPLAY_WINDOW_DAYS = 7
 # 직군별 수집 설정입니다.
 # roles가 비어 있으면 해당 상위 직군 전체를 수집합니다.
 TARGET_CATEGORIES: dict[str, dict[str, object]] = {
@@ -581,10 +589,7 @@ def save_wanted_debug(driver: webdriver.Chrome, debug_dir: Path, name: str) -> N
 
 def direct_category_url(parent_id: str, item_id: str = "") -> str:
     path = f"{parent_id}/{item_id}" if item_id else parent_id
-    return (
-        f"https://www.wanted.co.kr/wdlist/{path}"
-        "?country=kr&job_sort=job.latest_order&years=0&locations=all"
-    )
+    return f"https://www.wanted.co.kr/wdlist/{path}?{WANTED_QUERY}"
 
 
 def direct_sources() -> list[dict[str, str]]:
@@ -3412,7 +3417,7 @@ def _minimal_job_record(job: Job) -> dict:
     }
 
 
-def compact_old_state_records(seen: dict, keep_days: int = 1) -> None:
+def compact_old_state_records(seen: dict, keep_days: int = DISPLAY_WINDOW_DAYS - 1) -> None:
     """비교에 필요 없는 오래된 상세본문을 제거해 seen_jobs.json이 계속 커지는 것을 막습니다."""
     today = now_kst().date()
     keep_dates = {(today - timedelta(days=i)).isoformat() for i in range(keep_days + 1)}
@@ -3482,7 +3487,7 @@ def register_crawled_jobs(jobs: list[Job], seen: dict, baseline_mode: bool, plat
         platform_meta = meta.setdefault("platforms", {}).setdefault(platform, {})
         platform_meta["last_run_at"] = now_text
         platform_meta["last_run_mode"] = "baseline" if baseline_mode else "incremental"
-    compact_old_state_records(seen, keep_days=1)
+    compact_old_state_records(seen, keep_days=DISPLAY_WINDOW_DAYS - 1)
     save_seen(seen)
     return seen, new_count
 
@@ -3513,7 +3518,7 @@ def _record_to_job(record: dict) -> Optional[Job]:
     return job
 
 
-def jobs_from_recent_discovery_window(seen: dict, days: int = 1) -> list[Job]:
+def jobs_from_recent_discovery_window(seen: dict, days: int = DISPLAY_WINDOW_DAYS - 1) -> list[Job]:
     today = now_kst().date()
     allowed_dates = {(today - timedelta(days=i)).isoformat() for i in range(days + 1)}
     jobs: list[Job] = []
@@ -3643,7 +3648,7 @@ def generate_html(jobs: list[Job], init_seen: bool = False) -> None:
         <a href="#section-{html.escape(cat)}" class="sum-card" style="border-color:{color}30;">
           <div class="sum-icon">{icon}</div>
           <div class="sum-num" style="color:{color};">{count}</div>
-          <div class="sum-label">{html.escape(cat)} · 오늘 {new_count} · 어제 {yesterday_count}</div>
+          <div class="sum-label">{html.escape(cat)} · 최근 7일 {count} · 오늘 {new_count} · 어제 {yesterday_count}</div>
         </a>
         """)
 
@@ -3658,7 +3663,12 @@ def generate_html(jobs: list[Job], init_seen: bool = False) -> None:
         elif first_date == yesterday_text:
             new_badge = '<span class="status-badge yesterday">어제</span>'
         else:
-            new_badge = '<span class="status-badge old">기존</span>' 
+            try:
+                days_ago = (now.date() - date.fromisoformat(first_date)).days
+            except (TypeError, ValueError):
+                days_ago = -1
+            badge_text = f"{days_ago}일 전" if 2 <= days_ago < DISPLAY_WINDOW_DAYS else "기존"
+            new_badge = f'<span class="status-badge old">{badge_text}</span>' 
         start_label = html.escape(j.start_date or '확인 필요')
         deadline_label = html.escape(j.deadline or '마감일 확인 필요')
         company_label = html.escape(j.company or '회사명 확인 필요')
@@ -3749,7 +3759,7 @@ section{margin-bottom:24px}section h2{font-size:18px;font-weight:950;margin:0 0 
   <header class="hdr">
     <h1>📋 채용공고 모음</h1>
     <div class="sub">수집 시각 __NOW_STR__<br>카톡 공유글과 Figma용 JSON은 선택한 공고를 기준으로 생성됩니다. · JSON 전용 라이트 버전</div>
-    <span class="badge total">전체 __TOTAL__건</span>
+    <span class="badge total">최근 7일 __TOTAL__건</span>
     <span class="badge new">오늘 신규 __NEW__건</span>
     <span class="badge yesterday">어제 발견 __YESTERDAY__건</span>
   </header>
@@ -3989,7 +3999,7 @@ def main() -> int:
             print(f"- {platform} 기준 데이터 생성: {', '.join(baseline_categories)}")
         if incremental_categories:
             print(f"- {platform} 신규 증분 수집: {', '.join(incremental_categories)}")
-    print("- 담당자 화면: 최초 발견일이 오늘 또는 어제인 공고")
+    print(f"- 담당자 화면: 최초 발견일이 최근 {DISPLAY_WINDOW_DAYS}일인 공고")
 
     driver = None
     jobs_by_key: dict[tuple[str, str], list[Job]] = {
@@ -4107,7 +4117,7 @@ def main() -> int:
 
     save_seen(seen)
 
-    recent_jobs = jobs_from_recent_discovery_window(seen, days=1)
+    recent_jobs = jobs_from_recent_discovery_window(seen, days=DISPLAY_WINDOW_DAYS - 1)
     if args.wanted_test_details:
         # 상세 강제 테스트에서는 신규 여부와 관계없이 방금 방문한 공고를 모두
         # CSV/JSON/웹 화면에 출력해 즉시 검수할 수 있게 합니다.
@@ -4120,11 +4130,10 @@ def main() -> int:
 
     def discovery_rank(job: Job) -> int:
         seen_date = (job.first_seen_at or "")[:10]
-        if seen_date == today_text:
-            return 0
-        if seen_date == yesterday_text:
-            return 1
-        return 2
+        try:
+            return (now_kst().date() - date.fromisoformat(seen_date)).days
+        except (TypeError, ValueError):
+            return 999
 
     display_jobs.sort(key=lambda job: (
         discovery_rank(job),
@@ -4141,7 +4150,7 @@ def main() -> int:
     print(f"- 이번 크롤링 신규: {total_new_count}건")
     if baseline_display_jobs:
         print(f"- 이번에 생성한 기준 데이터 점검: {len(baseline_display_jobs)}건")
-    print(f"- 담당자 화면 노출: {len(display_jobs)}건 (오늘+어제 및 이번 기준 점검)")
+    print(f"- 담당자 화면 노출: {len(display_jobs)}건 (최근 {DISPLAY_WINDOW_DAYS}일 및 이번 기준 점검)")
     print(f"- HTML: {SITE_DIR / 'index.html'}")
     print(f"- CSV : {SITE_DIR / 'jobs.csv'}")
     print(f"- JSON: {SITE_DIR / 'jobs.json'}")
@@ -4149,7 +4158,7 @@ def main() -> int:
     print("\n운영 방식:")
     print("1) 플랫폼·직군별 최초 실행은 기존 공고 URL을 기준 데이터로 저장")
     print("2) 다음 실행부터 처음 보는 URL만 상세 페이지를 확인")
-    print("3) 담당자 화면에는 어제 발견 + 오늘 발견 공고만 표시")
+    print(f"3) 담당자 화면에는 최근 {DISPLAY_WINDOW_DAYS}일 안에 처음 발견한 공고를 표시")
     return 0
 
 
