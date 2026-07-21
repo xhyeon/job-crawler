@@ -1479,14 +1479,6 @@ def crawl_direct(
         source_results.append((source, jobs))
         save_wanted_debug(driver, debug_dir, f"direct_{idx}_{item_id}")
 
-    # 원티드 전체 URL에서 기존 공고 링크조차 한 건도 읽지 못했다면
-    # "신규 공고 없음"이 아니라 목록 로딩/선택자/차단 문제로 판단합니다.
-    if sources and per_source and all(count == 0 for count in per_source.values()):
-        raise RuntimeError(
-            "원티드 전체 목록에서 공고 링크를 1건도 찾지 못했습니다. "
-            "debug/direct_*.png와 debug/direct_*.html을 확인하세요."
-        )
-
     # 먼저 같은 담당자용 직군 안에서 세부 직무 결과를 합친 뒤,
     # 최종 제한을 적용할 때 기획만 앞에서 많이 차지하지 않도록 직군별 라운드로빈으로 섞습니다.
     category_buckets: dict[str, list[WantedJob]] = {}
@@ -3536,75 +3528,6 @@ def jobs_from_recent_discovery_window(seen: dict, days: int = 1) -> list[Job]:
     return jobs
 
 
-def jobs_from_latest_discovery_date(seen: dict, max_lookback_days: int = 7) -> list[Job]:
-    """최근 며칠 중 공고가 존재하는 가장 최신 발견일의 공고를 복구합니다.
-
-    기존 site/jobs.json이 이미 빈 배열로 덮인 경우에도 seen_jobs.json에 남아 있는
-    제목·회사·링크를 이용해 마지막 화면을 최소한으로 복구합니다.
-    """
-    today = now_kst().date()
-    candidates: list[tuple[str, dict]] = []
-    for _, record in _state_job_items(seen):
-        if record.get("is_baseline"):
-            continue
-        first_seen_date = str(record.get("first_seen_date") or "")
-        if not first_seen_date:
-            continue
-        try:
-            discovered = date.fromisoformat(first_seen_date)
-        except ValueError:
-            continue
-        age_days = (today - discovered).days
-        if 0 <= age_days <= max_lookback_days:
-            candidates.append((first_seen_date, record))
-
-    if not candidates:
-        return []
-
-    latest_date = max(first_seen_date for first_seen_date, _ in candidates)
-    jobs: list[Job] = []
-    for first_seen_date, record in candidates:
-        if first_seen_date != latest_date:
-            continue
-        job = _record_to_job(record)
-        if job:
-            jobs.append(job)
-    return dedupe_jobs(jobs)
-
-
-def load_previous_display_jobs() -> list[Job]:
-    """직전 사이트 화면에 표시했던 비어 있지 않은 공고 목록을 불러옵니다.
-
-    토·일·공휴일처럼 신규 공고가 없거나 일부 플랫폼 수집이 실패했을 때
-    site/jobs.json을 마지막 정상 화면의 스냅샷으로 사용합니다.
-    """
-    path = SITE_DIR / "jobs.json"
-    if not path.exists():
-        return []
-
-    try:
-        rows = json.loads(path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError):
-        return []
-
-    if not isinstance(rows, list):
-        return []
-
-    jobs: list[Job] = []
-    today_text = now_kst().date().isoformat()
-    for row in rows:
-        if not isinstance(row, dict):
-            continue
-        job = _record_to_job(row)
-        if not job:
-            continue
-        # jobs.json에는 first_seen_date가 없으므로 first_seen_at으로 오늘 여부를 복구합니다.
-        job.is_new = (job.first_seen_at or "")[:10] == today_text
-        jobs.append(job)
-
-    return dedupe_jobs(jobs)
-
-
 def crawl_platform_category(
     driver,
     platform: str,
@@ -3694,12 +3617,7 @@ def write_json_csv(jobs: list[Job]) -> None:
 
 
 
-def generate_html(
-    jobs: list[Job],
-    init_seen: bool = False,
-    status_message: str = "",
-    run_status: str = "updated",
-) -> None:
+def generate_html(jobs: list[Job], init_seen: bool = False) -> None:
     now = now_kst()
     now_str = now.strftime("%Y년 %m월 %d일 %H:%M")
     today_text = now.date().isoformat()
@@ -3817,7 +3735,6 @@ body{margin:0;padding:18px;background:#fff;color:#0f172a;font-family:Pretendard,
 .wrap{max-width:1060px;margin:0 auto}
 .hdr{text-align:center;margin-bottom:14px;padding:22px 18px;background:linear-gradient(135deg,#eff6ff,#f5f3ff);border:1px solid #e2e8f0;border-radius:18px}
 .hdr h1{font-size:24px;margin:0 0 8px;font-weight:950;letter-spacing:-.03em}.sub{color:#64748b;font-size:12px;line-height:1.55}.badge{display:inline-flex;margin:10px 3px 0;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:850}.badge.total{background:#dbeafe;color:#1d4ed8}.badge.new{background:#ffe4e6;color:#be123c}.badge.yesterday{background:#e0f2fe;color:#0369a1}
-.run-status{margin:12px auto 0;max-width:760px;padding:9px 12px;border-radius:10px;font-size:12px;font-weight:850;line-height:1.5}.run-status.updated{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0}.run-status.no_new{background:#eff6ff;color:#1d4ed8;border:1px solid #bfdbfe}.run-status.error{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}.run-status.baseline{background:#fefce8;color:#a16207;border:1px solid #fde68a}.run-status.test{background:#f5f3ff;color:#6d28d9;border:1px solid #ddd6fe}
 .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:14px}.sum-card{display:block;text-decoration:none;text-align:center;padding:12px 8px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;transition:.2s;box-shadow:0 6px 18px rgba(15,23,42,.04)}.sum-card:hover{transform:translateY(-2px);background:#f8fafc}.sum-icon{font-size:20px;margin-bottom:3px}.sum-num{font-size:22px;font-weight:950}.sum-label{font-size:11px;color:#64748b;font-weight:750;margin-top:2px}
 .tool-panel{position:sticky;top:10px;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border:1px solid #e2e8f0;border-radius:16px;padding:14px;margin:0 0 18px;box-shadow:0 12px 36px rgba(15,23,42,.09)}.tool-panel h2{border:0;margin:0 0 8px;padding:0;color:#0f172a;font-size:17px}.tool-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.selected-count{font-size:12px;color:#334155;font-weight:850;margin-right:auto}.tool-btn{border:0;border-radius:10px;padding:9px 12px;background:#2563eb;color:#fff;font-weight:900;cursor:pointer}.tool-btn.secondary{background:#f1f5f9;color:#0f172a;border:1px solid #cbd5e1}.tool-btn.pink{background:#7c3aed}.tool-btn:disabled{opacity:.42;cursor:not-allowed}.hint{font-size:12px;color:#64748b;line-height:1.55;margin:8px 0 0}
 .output-box,.json-zone{display:none;margin-top:12px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px}.output-box.active,.json-zone.active{display:block}.json-zone.active{max-height:min(78vh,780px);overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;-webkit-overflow-scrolling:touch}.json-zone.fullscreen{max-height:none!important;overflow-y:auto!important}.result-panel{position:relative}.result-panel.collapsed>.result-body{display:none}.result-panel.fullscreen{position:fixed!important;inset:14px!important;z-index:9999!important;margin:0!important;overflow:auto!important;background:#fff!important;border:1px solid #cbd5e1!important;border-radius:16px!important;padding:14px!important;box-shadow:0 24px 80px rgba(15,23,42,.2)!important}.result-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;position:sticky;top:0;z-index:3;background:inherit;padding:2px 0 8px}.result-title{font-weight:950}.window-controls{display:flex;gap:6px;margin-left:auto}.window-btn{width:30px;height:30px;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc;color:#0f172a;font-weight:950;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}.window-btn:hover{background:#e2e8f0}.window-btn.close:hover{background:#fee2e2;border-color:#f87171;color:#b91c1c}.result-panel.collapsed .result-header{margin-bottom:0}.body-lock{overflow:hidden}
@@ -3835,7 +3752,6 @@ section{margin-bottom:24px}section h2{font-size:18px;font-weight:950;margin:0 0 
     <span class="badge total">전체 __TOTAL__건</span>
     <span class="badge new">오늘 신규 __NEW__건</span>
     <span class="badge yesterday">어제 발견 __YESTERDAY__건</span>
-    <div class="run-status __STATUS_CLASS__">__STATUS_MESSAGE__</div>
   </header>
   <div class="summary">__SUMMARY__</div>
   <section class="tool-panel" id="share-tools">
@@ -3994,8 +3910,6 @@ updateSelectionUI();
         .replace('__TOTAL__', str(len(jobs)))
         .replace('__NEW__', str(len(new_jobs)))
         .replace('__YESTERDAY__', str(len(yesterday_jobs)))
-        .replace('__STATUS_CLASS__', html.escape(run_status))
-        .replace('__STATUS_MESSAGE__', html.escape(status_message or "정상적으로 공고를 표시하고 있습니다."))
         .replace('__SUMMARY__', ''.join(summary_cards))
         .replace('__CATEGORY_SECTIONS__', ''.join(category_sections))
         .replace('__JOBS_JSON__', jobs_json)
@@ -4056,12 +3970,6 @@ def main() -> int:
     selected_platforms = ["링커리어", "원티드"] if args.platform == "all" else [args.platform]
     selected_categories = CATEGORY_ORDER if args.category == "all" else [args.category]
     seen = load_seen()
-    # 이번 실행이 0건/오류여도 덮어쓰지 않도록 직전 화면을 먼저 보관합니다.
-    # 현재 jobs.json이 이미 비어 있다면 최근 7일 이력 중 가장 최신 발견일을 복구합니다.
-    previous_display_jobs = (
-        load_previous_display_jobs()
-        or jobs_from_latest_discovery_date(seen, max_lookback_days=7)
-    )
     if args.init_seen:
         reset_selected_seen_state(seen, selected_platforms, selected_categories)
     baseline_flags = {
@@ -4200,47 +4108,12 @@ def main() -> int:
     save_seen(seen)
 
     recent_jobs = jobs_from_recent_discovery_window(seen, days=1)
-    fresh_display_jobs = dedupe_jobs(baseline_display_jobs + recent_jobs)
-    has_crawl_error = any(count > 0 for count in errors_by_key.values())
-
     if args.wanted_test_details:
-        # 상세 강제 테스트에서는 신규 여부와 관계없이 방금 방문한 공고를 모두 표시합니다.
+        # 상세 강제 테스트에서는 신규 여부와 관계없이 방금 방문한 공고를 모두
+        # CSV/JSON/웹 화면에 출력해 즉시 검수할 수 있게 합니다.
         display_jobs = dedupe_jobs(all_crawled_jobs)
-        run_status = "test"
-        status_message = "원티드 상세 강제 테스트 결과를 표시합니다."
-    elif has_crawl_error:
-        # 일부 플랫폼이 실패하면 새 결과로 덮어쓰지 않고 마지막 정상 화면을 유지합니다.
-        display_jobs = previous_display_jobs or fresh_display_jobs
-        run_status = "error"
-        status_message = "일부 플랫폼 수집에 실패하여 마지막 정상 수집 공고를 표시합니다."
-    elif baseline_display_jobs:
-        # 최초 기준 데이터 생성 또는 --init-seen 실행은 새 기준 결과를 표시합니다.
-        display_jobs = fresh_display_jobs
-        run_status = "baseline"
-        status_message = "기준 데이터 생성 결과를 표시합니다."
-    elif total_new_count > 0:
-        # 정상 실행 + 신규 공고 있음
-        display_jobs = fresh_display_jobs
-        run_status = "updated"
-        status_message = "오늘 새로 발견한 공고를 반영했습니다."
     else:
-        # 정상 실행 + 신규 공고 없음: 직전 비어 있지 않은 화면 유지
-        display_jobs = previous_display_jobs or fresh_display_jobs
-        run_status = "no_new"
-        status_message = "오늘 신규 공고가 없어 마지막으로 수집된 공고를 표시합니다."
-
-    if display_jobs:
-        display_dates = sorted(
-            {
-                (job.first_seen_at or "")[:10]
-                for job in display_jobs
-                if len((job.first_seen_at or "")) >= 10
-            }
-        )
-        if display_dates and run_status in {"no_new", "error"}:
-            status_message += f" (공고 기준일: {display_dates[-1]})"
-    elif run_status in {"no_new", "error"}:
-        status_message += " 이전에 저장된 공고가 없어 빈 화면을 표시합니다."
+        display_jobs = dedupe_jobs(baseline_display_jobs + recent_jobs)
 
     today_text = now_kst().date().isoformat()
     yesterday_text = (now_kst().date() - timedelta(days=1)).isoformat()
@@ -4262,19 +4135,13 @@ def main() -> int:
     ))
 
     write_json_csv(display_jobs)
-    generate_html(
-        display_jobs,
-        init_seen=bool(baseline_display_jobs),
-        status_message=status_message,
-        run_status=run_status,
-    )
+    generate_html(display_jobs, init_seen=bool(baseline_display_jobs))
 
     print("\n완료")
     print(f"- 이번 크롤링 신규: {total_new_count}건")
     if baseline_display_jobs:
         print(f"- 이번에 생성한 기준 데이터 점검: {len(baseline_display_jobs)}건")
-    print(f"- 담당자 화면 노출: {len(display_jobs)}건")
-    print(f"- 화면 상태: {run_status} / {status_message}")
+    print(f"- 담당자 화면 노출: {len(display_jobs)}건 (오늘+어제 및 이번 기준 점검)")
     print(f"- HTML: {SITE_DIR / 'index.html'}")
     print(f"- CSV : {SITE_DIR / 'jobs.csv'}")
     print(f"- JSON: {SITE_DIR / 'jobs.json'}")
@@ -4282,7 +4149,7 @@ def main() -> int:
     print("\n운영 방식:")
     print("1) 플랫폼·직군별 최초 실행은 기존 공고 URL을 기준 데이터로 저장")
     print("2) 다음 실행부터 처음 보는 URL만 상세 페이지를 확인")
-    print("3) 신규 공고가 없거나 수집 오류가 나면 마지막 정상 공고 화면을 유지")
+    print("3) 담당자 화면에는 어제 발견 + 오늘 발견 공고만 표시")
     return 0
 
 
