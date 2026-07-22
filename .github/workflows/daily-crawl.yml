@@ -57,7 +57,7 @@ jobs:
       - name: Run crawler
         run: |
           python job_crawler.py \
-            --platform all \
+            --platform 링커리어 \
             --category all \
             --headless \
             --auto-only \
