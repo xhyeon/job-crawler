@@ -3645,7 +3645,7 @@ def generate_html(jobs: list[Job], init_seen: bool = False) -> None:
         color = CATEGORY_COLORS.get(cat, "#94A3B8")
         icon = CATEGORY_ICONS.get(cat, "•")
         summary_cards.append(f"""
-        <a href="#section-{html.escape(cat)}" class="sum-card" style="border-color:{color}30;">
+        <a href="#section-{html.escape(cat)}" class="sum-card" data-category="{html.escape(cat)}" style="border-color:{color}30;">
           <div class="sum-icon">{icon}</div>
           <div class="sum-num" style="color:{color};">{count}</div>
           <div class="sum-label">{html.escape(cat)} · 최근 7일 {count} · 오늘 {new_count} · 어제 {yesterday_count}</div>
@@ -3656,6 +3656,10 @@ def generate_html(jobs: list[Job], init_seen: bool = False) -> None:
         platform_color = PLATFORM_COLORS.get(j.platform, "#94A3B8")
         category_color = CATEGORY_COLORS.get(j.category, "#94A3B8")
         first_date = (j.first_seen_at or "")[:10]
+        try:
+            days_ago = (now.date() - date.fromisoformat(first_date)).days if first_date else -1
+        except (TypeError, ValueError):
+            days_ago = -1
         if init_seen or not first_date:
             new_badge = '<span class="status-badge baseline">기준</span>'
         elif first_date == today_text:
@@ -3663,10 +3667,6 @@ def generate_html(jobs: list[Job], init_seen: bool = False) -> None:
         elif first_date == yesterday_text:
             new_badge = '<span class="status-badge yesterday">어제</span>'
         else:
-            try:
-                days_ago = (now.date() - date.fromisoformat(first_date)).days
-            except (TypeError, ValueError):
-                days_ago = -1
             badge_text = f"{days_ago}일 전" if 2 <= days_ago < DISPLAY_WINDOW_DAYS else "기존"
             new_badge = f'<span class="status-badge old">{badge_text}</span>' 
         start_label = html.escape(j.start_date or '확인 필요')
@@ -3687,7 +3687,7 @@ def generate_html(jobs: list[Job], init_seen: bool = False) -> None:
             desc_label = "본문 없음"
             desc_class = "manual"
         return f"""
-        <article class="card {'new-card' if j.is_new else ''}" data-fp="{html.escape(j.fingerprint)}">
+        <article class="card {'new-card' if j.is_new else ''}" data-fp="{html.escape(j.fingerprint)}" data-platform="{html.escape(j.platform)}" data-category="{html.escape(j.category)}" data-days-ago="{days_ago}">
           <div class="select-top">
             <label class="check-label">
               <input type="checkbox" class="job-check" value="{html.escape(j.fingerprint)}" aria-label="공고 선택">
@@ -3723,7 +3723,7 @@ def generate_html(jobs: list[Job], init_seen: bool = False) -> None:
         icon = CATEGORY_ICONS.get(cat, "•")
         cards = ''.join(render_job_card(j) for j in job_list) if job_list else '<div class="empty-mini">수집된 공고 없음</div>'
         category_sections.append(f"""
-        <section class="cat-section" id="section-{html.escape(cat)}">
+        <section class="cat-section" id="section-{html.escape(cat)}" data-category="{html.escape(cat)}">
           <h2 style="color:{color};border-bottom:3px solid {color};">
             {icon} {html.escape(cat)} <span class="count-badge" style="background:{color}22;color:{color};">{len(job_list)}건</span>
           </h2>
@@ -3746,6 +3746,7 @@ body{margin:0;padding:18px;background:#fff;color:#0f172a;font-family:Pretendard,
 .hdr{text-align:center;margin-bottom:14px;padding:22px 18px;background:linear-gradient(135deg,#eff6ff,#f5f3ff);border:1px solid #e2e8f0;border-radius:18px}
 .hdr h1{font-size:24px;margin:0 0 8px;font-weight:950;letter-spacing:-.03em}.sub{color:#64748b;font-size:12px;line-height:1.55}.badge{display:inline-flex;margin:10px 3px 0;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:850}.badge.total{background:#dbeafe;color:#1d4ed8}.badge.new{background:#ffe4e6;color:#be123c}.badge.yesterday{background:#e0f2fe;color:#0369a1}
 .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px;margin-bottom:14px}.sum-card{display:block;text-decoration:none;text-align:center;padding:12px 8px;border-radius:14px;background:#fff;border:1px solid #e2e8f0;transition:.2s;box-shadow:0 6px 18px rgba(15,23,42,.04)}.sum-card:hover{transform:translateY(-2px);background:#f8fafc}.sum-icon{font-size:20px;margin-bottom:3px}.sum-num{font-size:22px;font-weight:950}.sum-label{font-size:11px;color:#64748b;font-weight:750;margin-top:2px}
+.filter-panel{background:#fff;border:1px solid #dbeafe;border-radius:16px;padding:14px;margin:0 0 14px;box-shadow:0 8px 24px rgba(15,23,42,.06)}.filter-panel h2{margin:0 0 12px;padding:0;border:0;font-size:17px;color:#0f172a}.filter-group{display:flex;gap:10px;align-items:flex-start;margin:9px 0}.filter-label{width:58px;flex:0 0 58px;padding-top:7px;font-size:12px;font-weight:950;color:#334155}.filter-options{display:flex;flex-wrap:wrap;gap:7px}.filter-chip{cursor:pointer}.filter-chip input{position:absolute;opacity:0;pointer-events:none}.filter-chip span{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:7px 10px;border:1px solid #cbd5e1;border-radius:999px;background:#fff;color:#475569;font-size:12px;font-weight:850;transition:.15s}.filter-chip span:hover{border-color:#93c5fd;background:#f8fafc}.filter-chip input:checked+span{border-color:#2563eb;background:#eff6ff;color:#1d4ed8;box-shadow:inset 0 0 0 1px #2563eb}.filter-footer{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:12px;padding-top:10px;border-top:1px solid #e2e8f0}.filter-result{margin-right:auto;font-size:12px;color:#334155;font-weight:850}.filter-note{font-size:11px;color:#64748b}.filter-empty{margin:0 0 20px}.card[hidden],.cat-section[hidden],.sum-card[hidden],.filter-empty[hidden]{display:none!important}
 .tool-panel{position:sticky;top:10px;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border:1px solid #e2e8f0;border-radius:16px;padding:14px;margin:0 0 18px;box-shadow:0 12px 36px rgba(15,23,42,.09)}.tool-panel h2{border:0;margin:0 0 8px;padding:0;color:#0f172a;font-size:17px}.tool-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}.selected-count{font-size:12px;color:#334155;font-weight:850;margin-right:auto}.tool-btn{border:0;border-radius:10px;padding:9px 12px;background:#2563eb;color:#fff;font-weight:900;cursor:pointer}.tool-btn.secondary{background:#f1f5f9;color:#0f172a;border:1px solid #cbd5e1}.tool-btn.pink{background:#7c3aed}.tool-btn:disabled{opacity:.42;cursor:not-allowed}.hint{font-size:12px;color:#64748b;line-height:1.55;margin:8px 0 0}
 .output-box,.json-zone{display:none;margin-top:12px;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px}.output-box.active,.json-zone.active{display:block}.json-zone.active{max-height:min(78vh,780px);overflow-y:auto;overscroll-behavior:contain;scrollbar-gutter:stable;-webkit-overflow-scrolling:touch}.json-zone.fullscreen{max-height:none!important;overflow-y:auto!important}.result-panel{position:relative}.result-panel.collapsed>.result-body{display:none}.result-panel.fullscreen{position:fixed!important;inset:14px!important;z-index:9999!important;margin:0!important;overflow:auto!important;background:#fff!important;border:1px solid #cbd5e1!important;border-radius:16px!important;padding:14px!important;box-shadow:0 24px 80px rgba(15,23,42,.2)!important}.result-header{display:flex;align-items:center;gap:8px;margin-bottom:8px;position:sticky;top:0;z-index:3;background:inherit;padding:2px 0 8px}.result-title{font-weight:950}.window-controls{display:flex;gap:6px;margin-left:auto}.window-btn{width:30px;height:30px;border:1px solid #cbd5e1;border-radius:8px;background:#f8fafc;color:#0f172a;font-weight:950;cursor:pointer;display:inline-flex;align-items:center;justify-content:center}.window-btn:hover{background:#e2e8f0}.window-btn.close:hover{background:#fee2e2;border-color:#f87171;color:#b91c1c}.result-panel.collapsed .result-header{margin-bottom:0}.body-lock{overflow:hidden}
 .share-block{border:1px solid #e2e8f0;border-radius:12px;padding:10px;margin:10px 0;background:#fff}.share-block h3{margin:0 0 8px;font-size:14px}.share-block textarea,.output-box textarea{width:100%;min-height:172px;background:#fff;color:#0f172a;border:1px solid #cbd5e1;border-radius:10px;padding:12px;font-family:inherit;font-size:13px;line-height:1.6}.small-btn{border:1px solid #cbd5e1;background:#f8fafc;color:#0f172a;border-radius:8px;padding:7px 9px;font-size:12px;font-weight:850;cursor:pointer}.small-btn:hover{background:#e2e8f0}
@@ -3764,6 +3765,34 @@ section{margin-bottom:24px}section h2{font-size:18px;font-weight:950;margin:0 0 
     <span class="badge yesterday">어제 발견 __YESTERDAY__건</span>
   </header>
   <div class="summary">__SUMMARY__</div>
+  <section class="filter-panel" id="job-filters">
+    <h2>🔎 공고 필터</h2>
+    <div class="filter-group">
+      <div class="filter-label">플랫폼</div>
+      <div class="filter-options">
+        <label class="filter-chip"><input type="checkbox" class="job-filter platform-filter" value="원티드" checked><span>원티드</span></label>
+        <label class="filter-chip"><input type="checkbox" class="job-filter platform-filter" value="링커리어" checked><span>링커리어</span></label>
+      </div>
+    </div>
+    <div class="filter-group">
+      <div class="filter-label">발견일</div>
+      <div class="filter-options">
+        <label class="filter-chip"><input type="checkbox" class="job-filter day-filter" value="0" checked><span>오늘</span></label>
+        <label class="filter-chip"><input type="checkbox" class="job-filter day-filter" value="1" checked><span>어제</span></label>
+        <label class="filter-chip"><input type="checkbox" class="job-filter day-filter" value="2"><span>2일 전</span></label>
+        <label class="filter-chip"><input type="checkbox" class="job-filter day-filter" value="3"><span>3일 전</span></label>
+        <label class="filter-chip"><input type="checkbox" class="job-filter day-filter" value="4"><span>4일 전</span></label>
+        <label class="filter-chip"><input type="checkbox" class="job-filter day-filter" value="5"><span>5일 전</span></label>
+        <label class="filter-chip"><input type="checkbox" class="job-filter day-filter" value="6"><span>6일 전</span></label>
+      </div>
+    </div>
+    <div class="filter-footer">
+      <div class="filter-result">표시 중 <b id="filterResultCount">0</b>건</div>
+      <span class="filter-note">기본값: 플랫폼 전체 · 오늘/어제</span>
+      <button class="small-btn" id="resetJobFilters" type="button">기본값으로</button>
+    </div>
+  </section>
+  <div id="filterEmpty" class="empty-box filter-empty" hidden>선택한 조건에 맞는 공고가 없습니다.</div>
   <section class="tool-panel" id="share-tools">
     <h2>✅ 공유글 / JSON 생성</h2>
     <div class="tool-row">
@@ -3796,6 +3825,42 @@ const CATEGORY_ORDER = ["마케팅", "기획", "인사", "영업", "개발"];
 const CATEGORY_LABELS = {"기획":"기획/운영", "마케팅":"마케팅", "인사":"인사", "영업":"영업", "개발":"개발"};
 const JOB_MAP = new Map(JOBS.map(j => [j.fingerprint, j]));
 const selectedFps = new Set();
+function checkedValues(selector){return new Set(Array.from(document.querySelectorAll(selector+':checked')).map(el=>el.value));}
+function applyJobFilters(){
+  const platforms=checkedValues('.platform-filter');
+  const days=new Set(Array.from(document.querySelectorAll('.day-filter:checked')).map(el=>Number(el.value)));
+  const counts=Object.fromEntries(CATEGORY_ORDER.map(cat=>[cat,0]));
+  let visibleCount=0;
+  document.querySelectorAll('.card').forEach(card=>{
+    const daysAgo=Number(card.dataset.daysAgo);
+    const show=platforms.has(card.dataset.platform)&&days.has(daysAgo);
+    card.hidden=!show;
+    if(show){visibleCount+=1; const cat=card.dataset.category||''; counts[cat]=(counts[cat]||0)+1;}
+  });
+  document.querySelectorAll('.cat-section').forEach(section=>{
+    const cat=section.dataset.category||'';
+    const count=counts[cat]||0;
+    section.hidden=count===0;
+    const badge=section.querySelector('.count-badge');
+    if(badge)badge.textContent=`${count}건`;
+  });
+  document.querySelectorAll('.sum-card').forEach(card=>{
+    const cat=card.dataset.category||'';
+    const count=counts[cat]||0;
+    card.hidden=count===0;
+    const num=card.querySelector('.sum-num');
+    const label=card.querySelector('.sum-label');
+    if(num)num.textContent=String(count);
+    if(label)label.textContent=`${cat} · 필터 결과 ${count}건`;
+  });
+  document.getElementById('filterResultCount').textContent=String(visibleCount);
+  document.getElementById('filterEmpty').hidden=visibleCount!==0;
+}
+function resetJobFilters(){
+  document.querySelectorAll('.platform-filter').forEach(el=>{el.checked=true;});
+  document.querySelectorAll('.day-filter').forEach(el=>{el.checked=el.value==='0'||el.value==='1';});
+  applyJobFilters();
+}
 function escapeHtml(str){return String(str || '').replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));}
 function escapeRegExp(str){return String(str || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');}
 function cleanTitle(job){let title=(job.title||'').trim(); const company=(job.company||'').trim(); if(company){title=title.replace(new RegExp('^\\['+escapeRegExp(company)+'\\]\\s*'),''); title=title.replace(new RegExp('^'+escapeRegExp(company)+'\\s*'),'');} return title || '공고명 확인 필요';}
@@ -3906,12 +3971,14 @@ function toggleResultFullscreen(id,btn){const el=document.getElementById(id);if(
 async function copyFigmaJson(fp){const text=refreshJsonPreview(fp); try{await navigator.clipboard.writeText(text); alert('Figma용 JSON 복사 완료');}catch(e){prompt('아래 JSON을 복사해주세요.',text);}}
 function createJsonEditor(job){const fp=job.fingerprint; const demo=classifyDemoText(job.description_text||'',job); const typeText=job.description_type==='text'?'크롤링된 텍스트를 원문 입력칸에 넣었습니다.':'이미지 공고는 원문을 보며 필요한 내용을 붙여넣은 뒤 예시 문구 생성 버튼을 누르세요.'; return `<article class="json-set"><h3>[${escapeHtml(job.company||'회사명 확인 필요')}] ${escapeHtml(cleanTitle(job))}</h3><p class="manual-note">${typeText}</p><div class="ai-demo-box"><div class="ai-demo-head"><b>1. 공고 원문 입력</b><span class="ai-badge">GPT API 미연결 · 데모 로직</span></div><textarea id="source_${fp}" class="manual-text" placeholder="공고 내용을 순서 없이 붙여넣어도 됩니다. 예: 담당업무, 필요요건, 우대사항, 근무기간, 마감일 등">${escapeHtml(job.description_text||'')}</textarea><div class="demo-actions"><button class="tool-btn" type="button" onclick="applyDemoAI(JOB_MAP.get('${fp}'))">✨ AI 문구 생성 예시</button><button class="tool-btn secondary" type="button" onclick="refreshJsonPreview('${fp}')">JSON 새로고침</button><button class="tool-btn secondary" type="button" onclick="copyFigmaJson('${fp}')">Figma용 JSON 복사</button></div><div class="ai-demo-head"><b>2. 구조화 결과 확인·수정</b></div><div class="form-grid"><div class="form-field"><label>회사명</label><input id="f_company_${fp}" value="${escapeHtml(demo.company)}"></div><div class="form-field"><label>채용 직무</label><input id="f_role_${fp}" value="${escapeHtml(demo.role)}"></div><div class="form-field"><label>고용 형태</label><input id="f_employment_${fp}" value="${escapeHtml(demo.employment)}"></div><div class="form-field"><label>마감 기한</label><input id="f_deadline_${fp}" value="${escapeHtml(demo.deadline)}"></div><div class="form-field full"><label>헤드라인</label><textarea id="f_headline_${fp}">${escapeHtml(demo.headline)}</textarea></div><div class="form-field full"><label>담당 업무</label><textarea id="f_duties_${fp}">${escapeHtml(itemsToText(demo.duties))}</textarea></div><div class="form-field full"><label>필요 요건</label><textarea id="f_requirements_${fp}">${escapeHtml(itemsToText(demo.requirements))}</textarea></div><div class="form-field full"><label>우대 요건</label><textarea id="f_preferred_${fp}">${escapeHtml(itemsToText(demo.preferred))}</textarea></div><div class="form-field"><label>P3 게시물</label><input id="f_posts_${fp}" value="${escapeHtml(demo.posts||'371')}"></div><div class="form-field"><label>P3 팔로워</label><input id="f_followers_${fp}" value="${escapeHtml(demo.followers||'2.3만')}"></div><div class="form-field"><label>P3 팔로잉</label><input id="f_following_${fp}" value="${escapeHtml(demo.following||'7')}"></div></div><div class="ai-demo-head" style="margin-top:14px"><b>3. JSON 결과</b><span class="ai-badge">입력값 수정 시 자동 반영</span></div><textarea id="json_preview_${fp}" class="json-preview" readonly></textarea></div></article>`;}
 document.addEventListener('click', e => {const btn=e.target.closest('.select-toggle'); if(btn){toggleFp(btn.dataset.fp); return;} if(e.target.classList.contains('copy-one')){const t=e.target.closest('.share-block').querySelector('textarea').value; navigator.clipboard.writeText(t).then(()=>alert('복사 완료')).catch(()=>alert('textarea 내용을 직접 복사해주세요.'));}});
-document.addEventListener('change', e => {if(e.target.classList.contains('job-check')) toggleFp(e.target.value, e.target.checked);});
+document.addEventListener('change', e => {if(e.target.classList.contains('job-check')) toggleFp(e.target.value, e.target.checked); if(e.target.classList.contains('job-filter')) applyJobFilters();});
+document.getElementById('resetJobFilters').addEventListener('click', resetJobFilters);
 document.getElementById('clearSelection').addEventListener('click', () => {selectedFps.clear(); updateSelectionUI();});
 document.getElementById('makeAllKakao').addEventListener('click', renderShareBlocks);
 document.getElementById('copyAllKakao').addEventListener('click', async () => {const text=Array.from(document.querySelectorAll('#shareBlocks textarea')).map(t=>t.value).join('\n\n--------------------\n\n'); try{await navigator.clipboard.writeText(text); alert('전체 복사 완료');}catch(e){alert('복사가 안 되면 각 textarea 내용을 직접 복사해주세요.');}});
 document.getElementById('makeJson').addEventListener('click', () => {const job=getSelectedJobs()[0]; if(!job){alert('JSON으로 만들 공고 1개를 선택해주세요.'); return;} const zone=document.getElementById('jsonZone'); zone.innerHTML=`<div class="result-header"><span class="result-title">Figma용 JSON</span><div class="window-controls"><button class="window-btn" type="button" title="접기/펼치기" onclick="toggleResultCollapse('jsonZone', this)">—</button><button class="window-btn" type="button" title="전체화면/복원" onclick="toggleResultFullscreen('jsonZone', this)">□</button><button class="window-btn close" type="button" title="닫기" onclick="closeResultPanel('jsonZone')">×</button></div></div><div class="result-body"><p class="manual-note">이미지 미리보기 없이 구조화된 JSON만 생성합니다. 필드를 수정하면 아래 JSON이 자동으로 갱신됩니다.</p>${createJsonEditor(job)}</div>`; zone.classList.remove('collapsed','fullscreen'); document.body.classList.remove('body-lock'); zone.classList.add('active'); zone.querySelectorAll('input, textarea').forEach(el=>{if(el.id.startsWith('f_')) el.addEventListener('input',()=>refreshJsonPreview(job.fingerprint));}); refreshJsonPreview(job.fingerprint); zone.scrollIntoView({behavior:'smooth', block:'start'});});
 updateSelectionUI();
+applyJobFilters();
 </script>
 </body>
 </html>"""
