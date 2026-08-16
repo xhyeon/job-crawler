@@ -3,7 +3,7 @@
     "version": 3,
     "platforms": {
       "링커리어": {
-        "last_run_at": "2026-08-15 12:33:42",
+        "last_run_at": "2026-08-16 12:40:50",
         "last_run_mode": "incremental",
         "categories": {
           "마케팅": {
@@ -58,7 +58,7 @@
       }
     },
     "initialized_at": "2026-07-15 18:04:25",
-    "last_run_at": "2026-08-16 00:06:14",
+    "last_run_at": "2026-08-16 12:40:50",
     "last_run_date": "2026-08-16",
     "last_run_mode": "incremental"
   },
