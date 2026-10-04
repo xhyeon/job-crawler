@@ -3,7 +3,7 @@
     "version": 3,
     "platforms": {
       "링커리어": {
-        "last_run_at": "2026-10-03 17:43:18",
+        "last_run_at": "2026-10-04 17:58:41",
         "last_run_mode": "incremental",
         "categories": {
           "마케팅": {
@@ -58,8 +58,8 @@
       }
     },
     "initialized_at": "2026-07-15 18:04:25",
-    "last_run_at": "2026-10-03 17:43:18",
-    "last_run_date": "2026-10-03",
+    "last_run_at": "2026-10-04 17:58:41",
+    "last_run_date": "2026-10-04",
     "last_run_mode": "incremental"
   },
   "486b771ac5b8622e": {
@@ -125611,5 +125611,25 @@
     "first_seen_date": "2026-10-03",
     "baseline_seen_at": "",
     "last_seen_at": "2026-10-03 17:43:18"
+  },
+  "643c160d46a610cc": {
+    "title": "디지털 트윈 3D 모델러 (Digital Twin)",
+    "company": "주식회사 인터엑스",
+    "platform": "링커리어",
+    "category": "개발",
+    "deadline": "채용 시 마감",
+    "link": "https://linkareer.com/activity/354760",
+    "detail_url": "https://linkareer.com/activity/354760",
+    "apply_url": "",
+    "start_date": "2026.10.04",
+    "job_type": "채용연계형 인턴",
+    "raw_category": "디자인",
+    "description_type": "image",
+    "description_text": "",
+    "first_seen_at": "2026-10-04 17:58:41",
+    "is_baseline": false,
+    "first_seen_date": "2026-10-04",
+    "baseline_seen_at": "",
+    "last_seen_at": "2026-10-04 17:58:41"
   }
 }
