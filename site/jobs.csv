@@ -1,14 +1,14 @@
 ﻿platform,category,is_new,company,title,start_date,deadline,job_type,raw_category,description_type,description_text,link,detail_url,apply_url,first_seen_at,fingerprint
-링커리어,마케팅,True,주식회사 컬리,뷰티 MD 운영지원 담당자 (계약직),2026.10.08,채용 시 마감,계약직,마케팅/광고,image,,https://linkareer.com/activity/355815,https://linkareer.com/activity/355815,,2026-10-09 18:49:34,21d82620026b5108
-링커리어,인사,True,아이샵케어,[토스플레이스 자회사/iShopCARE] People팀 HR Assistant (3개월 체험형),2026.10.08,채용 시 마감,체험형 인턴,기획/경영,image,,https://linkareer.com/activity/355807,https://linkareer.com/activity/355807,,2026-10-09 18:49:34,3485caa912b9ba96
-링커리어,개발,True,(주)비바리퍼블리카,[토스] IT Security Specialist (신입 / 2년 이하),2026.10.08,2026.11.14,계약직,IT/개발,image,,https://linkareer.com/activity/355702,https://linkareer.com/activity/355702,,2026-10-09 18:49:35,2e96c2d76e2c3a08
-링커리어,개발,True,BNK캐피탈,[BNK 캐피탈] 2026년 신입사원 채용,2026.10.08,2026.10.18,신입,"기획/경영, IT/개발",text_image,"[BNK 캐피탈] 2026년 신입사원 채용
+링커리어,마케팅,False,주식회사 컬리,뷰티 MD 운영지원 담당자 (계약직),2026.10.08,채용 시 마감,계약직,마케팅/광고,image,,https://linkareer.com/activity/355815,https://linkareer.com/activity/355815,,2026-10-09 18:49:34,21d82620026b5108
+링커리어,인사,False,아이샵케어,[토스플레이스 자회사/iShopCARE] People팀 HR Assistant (3개월 체험형),2026.10.08,채용 시 마감,체험형 인턴,기획/경영,image,,https://linkareer.com/activity/355807,https://linkareer.com/activity/355807,,2026-10-09 18:49:34,3485caa912b9ba96
+링커리어,개발,False,(주)비바리퍼블리카,[토스] IT Security Specialist (신입 / 2년 이하),2026.10.08,2026.11.14,계약직,IT/개발,image,,https://linkareer.com/activity/355702,https://linkareer.com/activity/355702,,2026-10-09 18:49:35,2e96c2d76e2c3a08
+링커리어,개발,False,BNK캐피탈,[BNK 캐피탈] 2026년 신입사원 채용,2026.10.08,2026.10.18,신입,"기획/경영, IT/개발",text_image,"[BNK 캐피탈] 2026년 신입사원 채용
 모집부문
 일반 (00명)
 IT (0명)
 채용 전형 및 일정
 접수기간: 2026.10.08 (목) ~ 10.18 (일) 17:00 예정",https://linkareer.com/activity/355621,https://linkareer.com/activity/355621,,2026-10-09 18:49:35,754de03036f2d9b1
-링커리어,개발,True,LT메탈,[LT메탈] 신입/경력사원 수시채용,2026.10.07,2026.10.20,신입,"기획/경영, IT/개발, 생산/제조, 연구/R&D",text_image,"[LT메탈] 신입/경력사원 수시채용
+링커리어,개발,False,LT메탈,[LT메탈] 신입/경력사원 수시채용,2026.10.07,2026.10.20,신입,"기획/경영, IT/개발, 생산/제조, 연구/R&D",text_image,"[LT메탈] 신입/경력사원 수시채용
 접수 기간 2026-10-07 ~ 2026-10-20
 모집부문 및 상세내용
 모집 부문
@@ -146,7 +146,7 @@ Step 4
 홈페이지 지원
 유의사항
 허위 사실이 발견될 경우 채용이 취소될 수 있습니다.",https://linkareer.com/activity/355478,https://linkareer.com/activity/355478,,2026-10-09 18:49:35,2224e9a7e8242fbf
-링커리어,개발,True,동광제약,[동광제약] 2026년 4분기 전산팀 신입 및 경력사원 채용,2026.10.07,2026.10.18,"신입, 경력직",IT/개발,text_image,"[동광제약] 2026년 4분기 전산팀 신입 및 경력사원 채용
+링커리어,개발,False,동광제약,[동광제약] 2026년 4분기 전산팀 신입 및 경력사원 채용,2026.10.07,2026.10.18,"신입, 경력직",IT/개발,text_image,"[동광제약] 2026년 4분기 전산팀 신입 및 경력사원 채용
 [담당 업무]
 - 전산 시스템 관리
 - ERP시스템 운영 및 관리
@@ -167,7 +167,7 @@ Step 4
 - 전산 시스템 관리/운영 경험자
 - 서버 관리/운영 경험자
 - IT 인프라 관리/운영 경험자",https://linkareer.com/activity/355410,https://linkareer.com/activity/355410,,2026-10-09 18:49:35,be4e669b54b36d7a
-링커리어,개발,True,두산전자,[두산전자] IT업무지원 전문직 채용,2026.10.08,2026.10.23,신입,기획/경영,text_image,"[두산전자] IT업무지원 전문직 채용
+링커리어,개발,False,두산전자,[두산전자] IT업무지원 전문직 채용,2026.10.08,2026.10.23,신입,기획/경영,text_image,"[두산전자] IT업무지원 전문직 채용
 [자격요건]
 ※ 남자인 경우 병역필 또는 군 면제자
 ※ 국내/해외 출장에 결격 사유가 없는 자
@@ -175,7 +175,7 @@ Step 4
 서류전형 → DCAT → 실무면접 → 임원면접 → 최종면접
 [접수방법]
 두산그룹 채용 홈페이지(http://career.doosan.com)를 통한 Online 접수",https://linkareer.com/activity/355712,https://linkareer.com/activity/355712,,2026-10-09 18:49:35,e8cb3895d5846903
-링커리어,개발,True,레브잇,"[쇼포트] Product Engineer Internship (AI & Data, 월 400만원)",2026.10.08,채용 시 마감,체험형 인턴,IT/개발,text,"레브잇 PMF팀은 강재윤 CEO를 포함한 핵심 멤버들이 모여,
+링커리어,개발,False,레브잇,"[쇼포트] Product Engineer Internship (AI & Data, 월 400만원)",2026.10.08,채용 시 마감,체험형 인턴,IT/개발,text,"레브잇 PMF팀은 강재윤 CEO를 포함한 핵심 멤버들이 모여,
 패션·뷰티·건강식품·가전·가구 등 다양한 카테고리에서 ‘AI 쇼핑 비서(AI Shopping Assistant)’를 만들고 있습니다.
 AI를 통해 고객의 언어와 맥락을 이해하고, 신뢰할 수 있는 쇼핑 경험을 새롭게 정의합니다.
 [합류하게 될 팀]
@@ -219,7 +219,7 @@ AI 제품의 실험을 직접 설계하고 주도해본 경험이 있으신 분�
 레브잇은 지원자의 역량을 최우선적으로 검토하고 있습니다. 이력서 제출 시 직무와 무관한 개인정보 및 연봉 정보는 삭제 후 지원 부탁드립니다.
 이력서 및 제출 서류에 허위 사실이 발견되거나 근무 이력 중 징계사항이 확인될 경우, 채용이 취소될 수 있습니다.
 레브잇 내규에 따라 채용 금지자 또는 결격사유 해당자는 채용이 취소될 수 있습니다.",https://linkareer.com/activity/355568,https://linkareer.com/activity/355568,,2026-10-09 18:49:35,e26e85e0e8080d72
-링커리어,개발,True,신한라이프생명보험,[신한라이프생명보험] 2026 신입채용,2026.10.07,2026.10.16,신입,"기획/경영, IT/개발, 영업/CS, 금융, 물류/유통",text_image,"[신한라이프생명보험] 2026 신입채용
+링커리어,개발,False,신한라이프생명보험,[신한라이프생명보험] 2026 신입채용,2026.10.07,2026.10.16,신입,"기획/경영, IT/개발, 영업/CS, 금융, 물류/유통",text_image,"[신한라이프생명보험] 2026 신입채용
 [모집분야]
 영업전략 (FC, DB, B2B)
 상품
@@ -231,7 +231,7 @@ DX (ICT)
 [접수기간]
 10월 07일 ~ 10월 16일
 [채용공고]",https://linkareer.com/activity/355477,https://linkareer.com/activity/355477,,2026-10-09 18:49:35,bb82f75efa39593b
-링커리어,개발,True,주식회사 스푼랩스,[Vigloo] AI 숏드라마 제작 인턴 (채용시 마감),2026.10.08,채용 시 마감,체험형 인턴,미디어/콘텐츠,image,,https://linkareer.com/activity/355808,https://linkareer.com/activity/355808,,2026-10-09 18:49:35,259b25bcf8342e71
+링커리어,개발,False,주식회사 스푼랩스,[Vigloo] AI 숏드라마 제작 인턴 (채용시 마감),2026.10.08,채용 시 마감,체험형 인턴,미디어/콘텐츠,image,,https://linkareer.com/activity/355808,https://linkareer.com/activity/355808,,2026-10-09 18:49:35,259b25bcf8342e71
 링커리어,마케팅,False,(주)이그니스,[이그니스] 클룹(CLOOP) 인플루언서 마케팅 운영 보조 파트타이머,2026.10.08,채용 시 마감,신입,마케팅/광고,image,,https://linkareer.com/activity/355664,https://linkareer.com/activity/355664,,2026-10-08 18:46:12,63dc72483490429f
 링커리어,마케팅,False,(주)폴싯,[Forsit Internship] 미국 시장 뷰티 SNS 마케팅 인턴,2026.10.08,2026.10.23,채용연계형 인턴,"마케팅/광고, 미디어/콘텐츠",text_image,"[Forsit Internship]
 미국 시장 뷰티 SNS 마케팅 인턴
@@ -3936,4 +3936,3 @@ AI·전산 심사역 (대리)
 [채용공고]",https://linkareer.com/activity/355096,https://linkareer.com/activity/355096,,2026-10-06 18:41:07,d27626e6e82b5d43
 링커리어,개발,False,한국항공대학교,2027년 한국항공대학교 정규직 전환형 신규직원 채용,2026.10.06,2026.10.21,신입,"기획/경영, IT/개발",image,,https://linkareer.com/activity/354857,https://linkareer.com/activity/354857,,2026-10-06 18:41:07,81c9d9b90d50a218
 링커리어,개발,False,주식회사 인터엑스,디지털 트윈 3D 모델러 (Digital Twin),2026.10.04,채용 시 마감,채용연계형 인턴,디자인,image,,https://linkareer.com/activity/354760,https://linkareer.com/activity/354760,,2026-10-04 17:58:41,643c160d46a610cc
-링커리어,개발,False,주식회사 더파운더즈,[더파운더즈] Global Recruiting Operations Intern,2026.10.02,채용 시 마감,체험형 인턴,기획/경영,text_image,"#HR인턴, #인사팀인턴, #인사인턴, #글로벌HR인턴, #글로벌리크루팅, #리크루팅인턴, #채용팀인턴, #피플팀인턴, #TA인턴, #리크루터인턴, #더파운더즈채용, #더파운더즈인턴, #스타트업HR, #스타트업인턴, #유니콘스타트업채용, #유학생인턴, #교환학생인턴, #해외거주경험인턴, #대학생인턴, #휴학생인턴, #3개월인턴, #글로벌채용, #해외채용, #외국계HR, #영어활용인턴, #어학우대인턴, #비즈니스영어인턴, #링크드인소싱, #인재소싱, #ATS관리, #영문이력서, #영어면접지원, #단기인턴",https://linkareer.com/activity/354691,https://linkareer.com/activity/354691,,2026-10-03 17:43:18,0e1082d646fdddb8

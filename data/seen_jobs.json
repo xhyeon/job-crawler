@@ -3,7 +3,7 @@
     "version": 3,
     "platforms": {
       "링커리어": {
-        "last_run_at": "2026-10-09 18:49:35",
+        "last_run_at": "2026-10-10 18:13:45",
         "last_run_mode": "incremental",
         "categories": {
           "마케팅": {
@@ -58,8 +58,8 @@
       }
     },
     "initialized_at": "2026-07-15 18:04:25",
-    "last_run_at": "2026-10-09 18:49:35",
-    "last_run_date": "2026-10-09",
+    "last_run_at": "2026-10-10 18:13:45",
+    "last_run_date": "2026-10-10",
     "last_run_mode": "incremental"
   },
   "486b771ac5b8622e": {
@@ -124121,15 +124121,9 @@
     "company": "주식회사 더파운더즈",
     "platform": "링커리어",
     "category": "개발",
-    "deadline": "채용 시 마감",
     "link": "https://linkareer.com/activity/354691",
     "detail_url": "https://linkareer.com/activity/354691",
     "apply_url": "",
-    "start_date": "2026.10.02",
-    "job_type": "체험형 인턴",
-    "raw_category": "기획/경영",
-    "description_type": "text_image",
-    "description_text": "#HR인턴, #인사팀인턴, #인사인턴, #글로벌HR인턴, #글로벌리크루팅, #리크루팅인턴, #채용팀인턴, #피플팀인턴, #TA인턴, #리크루터인턴, #더파운더즈채용, #더파운더즈인턴, #스타트업HR, #스타트업인턴, #유니콘스타트업채용, #유학생인턴, #교환학생인턴, #해외거주경험인턴, #대학생인턴, #휴학생인턴, #3개월인턴, #글로벌채용, #해외채용, #외국계HR, #영어활용인턴, #어학우대인턴, #비즈니스영어인턴, #링크드인소싱, #인재소싱, #ATS관리, #영문이력서, #영어면접지원, #단기인턴",
     "first_seen_at": "2026-10-03 17:43:18",
     "is_baseline": false,
     "first_seen_date": "2026-10-03",
