@@ -3,7 +3,7 @@
     "version": 3,
     "platforms": {
       "링커리어": {
-        "last_run_at": "2026-10-31 18:04:59",
+        "last_run_at": "2026-11-01 18:54:47",
         "last_run_mode": "incremental",
         "categories": {
           "마케팅": {
@@ -58,8 +58,8 @@
       }
     },
     "initialized_at": "2026-07-15 18:04:25",
-    "last_run_at": "2026-10-31 18:04:59",
-    "last_run_date": "2026-10-31",
+    "last_run_at": "2026-11-01 18:54:47",
+    "last_run_date": "2026-11-01",
     "last_run_mode": "incremental"
   },
   "486b771ac5b8622e": {
@@ -165341,5 +165341,85 @@
     "first_seen_date": "2026-10-31",
     "baseline_seen_at": "",
     "last_seen_at": "2026-10-31 18:04:59"
+  },
+  "a5d92f877d02cb4a": {
+    "title": "[토스페이먼츠] Security Operations Engineer (CERT)",
+    "company": "비바리퍼블리카",
+    "platform": "링커리어",
+    "category": "개발",
+    "deadline": "2026.11.01 ~ 2026.12.15",
+    "link": "https://linkareer.com/activity/361172",
+    "detail_url": "https://linkareer.com/activity/361172",
+    "apply_url": "",
+    "start_date": "",
+    "job_type": "계약직",
+    "raw_category": "IT/개발",
+    "description_type": "image",
+    "description_text": "",
+    "first_seen_at": "2026-11-01 18:54:47",
+    "is_baseline": false,
+    "first_seen_date": "2026-11-01",
+    "baseline_seen_at": "",
+    "last_seen_at": "2026-11-01 18:54:47"
+  },
+  "ed5f5ea86dbb5dc6": {
+    "title": "[토스페이먼츠] Security Operations Engineer (Endpoint)",
+    "company": "비바리퍼블리카",
+    "platform": "링커리어",
+    "category": "개발",
+    "deadline": "2026.11.01 ~ 2026.12.15",
+    "link": "https://linkareer.com/activity/361171",
+    "detail_url": "https://linkareer.com/activity/361171",
+    "apply_url": "",
+    "start_date": "",
+    "job_type": "계약직",
+    "raw_category": "IT/개발",
+    "description_type": "image",
+    "description_text": "",
+    "first_seen_at": "2026-11-01 18:54:47",
+    "is_baseline": false,
+    "first_seen_date": "2026-11-01",
+    "baseline_seen_at": "",
+    "last_seen_at": "2026-11-01 18:54:47"
+  },
+  "d7e77b75f8b41192": {
+    "title": "[토스페이먼츠] Security Research Specialist",
+    "company": "비바리퍼블리카",
+    "platform": "링커리어",
+    "category": "개발",
+    "deadline": "2026.11.01 ~ 2026.12.15",
+    "link": "https://linkareer.com/activity/361169",
+    "detail_url": "https://linkareer.com/activity/361169",
+    "apply_url": "",
+    "start_date": "",
+    "job_type": "계약직",
+    "raw_category": "IT/개발",
+    "description_type": "image",
+    "description_text": "",
+    "first_seen_at": "2026-11-01 18:54:47",
+    "is_baseline": false,
+    "first_seen_date": "2026-11-01",
+    "baseline_seen_at": "",
+    "last_seen_at": "2026-11-01 18:54:47"
+  },
+  "a9a5e37fa64d4498": {
+    "title": "[토스페이먼츠] Information Security Specialist",
+    "company": "비바리퍼블리카",
+    "platform": "링커리어",
+    "category": "개발",
+    "deadline": "2026.11.01 ~ 2026.12.15",
+    "link": "https://linkareer.com/activity/361166",
+    "detail_url": "https://linkareer.com/activity/361166",
+    "apply_url": "",
+    "start_date": "",
+    "job_type": "계약직",
+    "raw_category": "IT/개발",
+    "description_type": "image",
+    "description_text": "",
+    "first_seen_at": "2026-11-01 18:54:47",
+    "is_baseline": false,
+    "first_seen_date": "2026-11-01",
+    "baseline_seen_at": "",
+    "last_seen_at": "2026-11-01 18:54:47"
   }
 }
